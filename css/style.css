@@ -1,0 +1,408 @@
+@font-face {
+    font-family: 'Gravity';
+    src: url(../fonts/Gravity.woff2) format(woff2);
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Ricordi Allegria';
+    src: url(../fonts/TT-Ricordi-Allegria.woff2) format(woff2);
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gravity', sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #21262A;
+    background-color: #F1F1F1;
+}
+
+main {
+    letter-spacing: 13%;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.hero {
+    background: url(../images/hero-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: #F1F1F1;
+    text-align: center;
+    height: 110vh;
+}
+
+.hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 37px 47px;
+}
+
+.logo img {
+    height: 63px;
+    display: block;
+}
+
+.user-link img {
+    height: 36px;
+    display: block;
+}
+
+.hero-content {
+    padding-top: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 1;
+    font-weight: 300;
+}
+
+.model-top {
+    padding-top: 145px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.model-top h2 {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.top-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #21262A;
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 64px;
+    letter-spacing: 0;
+    width: 300px;
+    height: 60px;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-button:hover {
+    color: #778898;
+    border-color: #778898;
+}
+
+.model-content {
+    padding: 80px 0 180px;
+}
+
+.models-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.models-container figure {
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.models-container img {
+    width: 100%;
+    display: block;
+    transition: all 0.4s ease;
+}
+
+.models-container figcaption {
+    margin-top: 20px;
+    font-size: 24px;
+    letter-spacing: 0;
+}
+
+.models-container figure:not(.active) {
+    transform: scale(0.80) translateY(-40px);
+    opacity: 0.90;
+}
+
+.models-container figure:not(.active) figcaption {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin-top: 0;
+    transition: opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+.models-container figure.active {
+    transform: scale(1.3) translateY(+40px);
+    opacity: 1;
+}
+
+.model-link {
+    display: block;
+    color: inherit;
+}
+
+.model-link:hover figure:not(.active) figcaption {
+    opacity: 1;
+    visibility: visible;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.model-link:hover figure:not(.active) {
+    transform: scale(0.85) translateY(-45px);
+    opacity: 0.95;
+}
+
+.model-link:hover figure.active {
+    transform: scale(1.35) translateY(+40px);
+    opacity: 0.95;
+}
+
+.benefits-text {
+    padding-left: 100px;
+}
+
+.benefits-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.benefits-text h2 {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.benefits-text p {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.benefits-top img {
+    width: 50%;
+}
+
+.benefits-buttons-top {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.benefits-buttons-bottom {
+    padding-bottom: 100px;
+    gap: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #21262A;
+    font-size: 28px;
+    letter-spacing: 13%;
+    width: 330px;
+    height: 80px;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    color: #F1F1F1;
+    background: #21262A;
+}
+
+.cabinet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #F1F1F1;
+    background: #21262A;
+}
+
+.cabinet-left {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-left: 80px;
+}
+
+.cabinet-left h2 {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+.cabinet-left p {
+    font-size: 24px;
+    margin-bottom: 140px;
+}
+
+.cabinet-left .button {
+    color: #F1F1F1;
+    border-color: #F1F1F1;
+    transition: all 0.5s ease;
+}
+
+.cabinet-left .button:hover {
+    color: #21262A;
+    background: #F1F1F1;
+}
+
+.cabinet img {
+    width: 55%;
+}
+
+.dealers h2 {
+    margin: 60px 0 40px;
+    padding-left: 80px;
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 56px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.dealers a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    height: 80px;
+    font-size: 24px;
+    color: #21262A;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    margin-left: 80px;
+    transition: all 0.4s ease;
+}
+
+.dealers a:hover {
+    color: #778898;
+    border-color: #778898;
+    transform: scale(1.03);
+}
+
+.map {
+    margin: 60px auto;
+    border: 1px solid #21262A;
+    width: 90%;
+    height: 700px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 60px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 40%;
+    padding-left: 100px;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.phones {
+    font-size: 32px;
+}
+
+.service {
+    font-size: 28px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.social-link img {
+    width: 57px;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover img {
+    transform: scale(1.1);
+}
+
+.footer-legal h3 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.footer-legal p {
+    font-size: 20px;
+    opacity: 0.5;
+}
+
+.developers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.developers p {
+    font-style: italic;
+    font-size: 32px;
+    opacity: 0.8;
+}
+
+.developers img {
+    max-width: 70%;
+}
