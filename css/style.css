@@ -119,11 +119,8 @@ img {
     border-color: #778898;
 }
 
-.model-content {
-    padding: 80px 0 180px;
-}
-
 .models-container {
+    padding: 80px 0 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,13 +129,12 @@ img {
 
 .models-container figure {
     text-align: center;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .models-container img {
     width: 100%;
     display: block;
-    transition: all 0.4s ease;
 }
 
 .models-container figcaption {
