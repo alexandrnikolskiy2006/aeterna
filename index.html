@@ -26,29 +26,37 @@
         </section>
         <section class="models">
             <div class="model-top">
-                <button class="top-button" aria-label="Предыдущая модель"><<<</button>
+                <button type="button" class="top-button" data-carousel-prev aria-controls="models-carousel" aria-label="Предыдущая модель"><<<</button>
                 <h2>СДЕЛАЙ СВОЙ ВЫБОР</h2>
-                <button class="top-button" aria-label="Следующая модель">>>></button>
+                <button type="button" class="top-button" data-carousel-next aria-controls="models-carousel" aria-label="Следующая модель">>>></button>
             </div>
-            <div class="models-container">
-                <a href="/" class="model-link">
-                    <figure>
-                        <img src="images/celeste.png" alt="Aeterna Celeste">
-                        <figcaption>Aeterna Celeste</figcaption>
-                    </figure>
-                </a>
-                <a href="/" class="model-link">
-                    <figure class="active">
-                        <img src="images/incrocio.png" alt="Aeterna Incrocio">
-                        <figcaption>Aeterna Incrocio</figcaption>
-                    </figure>
-                </a>
-                <a href="/" class="model-link">
-                    <figure>
-                        <img src="images/berlina.png" alt="Aeterna Berlina">
-                        <figcaption>Aeterna Berlina</figcaption>
-                    </figure>
-                </a>
+            <div class="models-viewport" id="models-carousel">
+                <div class="models-track">
+                    <div class="model-slide">
+                        <a href="/">
+                            <figure>
+                                <img src="images/celeste.png" alt="Aeterna Celeste">
+                                <figcaption>Aeterna Celeste</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="model-slide">
+                        <a href="/">
+                            <figure>
+                                <img src="images/incrocio.png" alt="Aeterna Incrocio">
+                                <figcaption>Aeterna Incrocio</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="model-slide">
+                        <a href="/">
+                            <figure>
+                                <img src="images/berlina.png" alt="Aeterna Berlina">
+                                <figcaption>Aeterna Berlina</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="benefits">
