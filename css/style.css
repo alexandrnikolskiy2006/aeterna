@@ -582,18 +582,7 @@ footer {
     gap: 40px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-size: 32px;
-    color: #778898;
-    margin-bottom: 8px;
-}
-
-.form-group input {
+.modal-form input {
     margin: 0 auto;
     padding: 16px 20px;
     width: 80%;
@@ -632,13 +621,17 @@ footer {
 
 .modal-footer a {
     text-decoration: none;
+    pointer-events: none;
+}
+
+.modal-pointer {
+    pointer-events: all;
 }
 
 .modal-switch,
 .modal-forgot,
 .modal-social {
     color: #21262A;
-    text-decoration: underline;
     margin: 0 12px;
     opacity: 0.5;
 }
