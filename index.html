@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
     <script src="js/models-slider.js" defer></script>
+    <script src="js/modals.js" defer></script>
 </head>
 <body>
     <main>
         <section class="hero">
             <div class="hero-top">
-                <a href="/" class="logo">
+                <a href="#" class="logo">
                     <img src="images/favicon.svg" alt="Aeterna">
                 </a>
-                <a href="/" class="user-link">
+                <a href="/profile" class="user-link" data-modal="auth">
                     <img src="images/user.svg" alt="Личный кабинет">
                 </a>
             </div>
@@ -33,7 +34,7 @@
             <div class="models-viewport" id="models-carousel">
                 <div class="models-track">
                     <div class="model-slide">
-                        <a href="/">
+                        <a href="#">
                             <figure>
                                 <img src="images/celeste.png" alt="Aeterna Celeste">
                                 <figcaption>Aeterna Celeste</figcaption>
@@ -41,7 +42,7 @@
                         </a>
                     </div>
                     <div class="model-slide">
-                        <a href="/">
+                        <a href="#">
                             <figure>
                                 <img src="images/incrocio.png" alt="Aeterna Incrocio">
                                 <figcaption>Aeterna Incrocio</figcaption>
@@ -49,7 +50,7 @@
                         </a>
                     </div>
                     <div class="model-slide">
-                        <a href="/">
+                        <a href="#">
                             <figure>
                                 <img src="images/berlina.png" alt="Aeterna Berlina">
                                 <figcaption>Aeterna Berlina</figcaption>
@@ -68,13 +69,13 @@
                 <img src="images/rode1.jpg" alt="Aeterna Berlina на фоне заката">
             </div>
             <div class="benefits-buttons-top">
-                <a href="/" class="button">ТЕСТ-ДРАЙВ</a>
-                <a href="/" class="button">КРЕДИТОВАНИЕ</a>
+                <a href="#" class="button">ТЕСТ-ДРАЙВ</a>
+                <a href="#" class="button">КРЕДИТОВАНИЕ</a>
                 <button class="button">АВТОМОБИЛИ В НАЛИЧИИ</button>
             </div>
             <div class="benefits-buttons-bottom">
-                <a href="/" class="button">ЗАПИСЬ НА ТО</a>
-                <a href="/" class="button">СТРАХОВАНИЕ</a>
+                <a href="#" class="button">ЗАПИСЬ НА ТО</a>
+                <a href="#" class="button">СТРАХОВАНИЕ</a>
             </div>
         </section>
         <section class="cabinet">
@@ -86,9 +87,8 @@
                     информации и функционалу,<br>
                     который улучшает общий опыт<br>
                     владения автомобилем.</p>
-                <a href="/" class="button">ПЕРЕЙТИ</a>
+                <a href="/profile" class="button" data-modal="auth">ПЕРЕЙТИ</a>
             </div>
-
             <img src="images/rode2.jpg" alt="Aeterna Berlina на фоне заката">
         </section>
         <section class="dealers">
@@ -157,5 +157,61 @@
             <p>41ПГ Никольский А.Ю. Чеканов К.С.</p>
         </div>
     </footer>
+    <div class="modal" id="auth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <button class="modal-close" aria-label="Закрыть">×</button>
+            <div class="modal-header">
+                <img src="images/auth-icon.svg" alt="" class="modal-icon">
+                <h2>АВТОРИЗАЦИЯ</h2>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <input type="text" id="auth-login" placeholder="Телефон/email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="auth-password" placeholder="Пароль" required>
+                </div>
+                <button type="submit" class="btn-primary">Войти</button>
+            </form>
+            <div class="modal-footer">
+                <a href="#reg-modal" class="modal-switch">Зарегистрироваться</a>
+                <a href="#" class="modal-forgot">Забыли пароль?</a>
+                <a href="#" class="modal-social">Войти через ВКонтакте</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="reg-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reg-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <button class="modal-close" aria-label="Закрыть">×</button>
+            <div class="modal-header">
+                <img src="images/auth-icon.svg" alt="" class="modal-icon">
+                <h2>РЕГИСТРАЦИЯ</h2>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <input type="text" id="reg-name" placeholder="Имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="reg-surname" placeholder="Фамилия" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="reg-phone" placeholder="Телефон" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="reg-password" placeholder="Пароль" required>
+                </div>
+                <button type="submit" class="btn-primary">Зарегистрироваться</button>
+            </form>
+            <div class="modal-footer">
+                <a href="#auth-modal" class="modal-switch">Уже есть аккаунт? Войти</a>
+                <a href="#" class="modal-social">Зарегистрироваться через ВКонтакте</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

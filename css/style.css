@@ -487,3 +487,162 @@ footer {
 .developers img {
     max-width: 70%;
 }
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0s linear 0.4s;
+}
+
+.modal-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, visibility 0s;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-active .modal-overlay {
+    opacity: 1;
+}
+
+.modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    background: #F1F1F1;
+    border-radius: 35px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px 32px;
+    opacity: 0;
+    transform: scaleY(0) translateY(-40px);
+    transform-origin: top;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.modal-active .modal-dialog {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    width: 32px;
+    background: transparent;
+    border: none;
+    font-size: 48px;
+    color: #21262A;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #778898;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+}
+
+.modal h2 {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    color: #21262A;
+    letter-spacing: 13%;
+    line-height: 1.2;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 32px;
+    color: #778898;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    margin: 0 auto;
+    padding: 16px 20px;
+    width: 80%;
+    font-size: 32px;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    outline: none;
+}
+
+.btn-primary {
+    margin: 0 auto;
+    width: 60%;
+    padding: 18px;
+    font-size: 32px;
+    background: #F1F1F1;
+    color: #21262A;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+    background: #21262A;
+    color: #F1F1F1;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 24px;
+    font-size: 24px;
+    gap: 24px;
+}
+
+.modal-footer a {
+    text-decoration: none;
+}
+
+.modal-switch,
+.modal-forgot,
+.modal-social {
+    color: #21262A;
+    text-decoration: underline;
+    margin: 0 12px;
+    opacity: 0.5;
+}
+
+.modal-footer a:hover {
+    color: #444;
+}
