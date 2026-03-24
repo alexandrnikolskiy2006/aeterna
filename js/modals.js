@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const authModal = document.getElementById('auth-modal');
-    const regModal  = document.getElementById('reg-modal');
+    const authModal       = document.getElementById('auth-modal');
+    const regModal        = document.getElementById('reg-modal');
+    const forgotModal     = document.getElementById('forgot-modal');
+    const forgotCodeModal = document.getElementById('forgot-code-modal');
+    const forgotNewPassModal = document.getElementById('forgot-newpass-modal');
+
     const openAuthTriggers = document.querySelectorAll('[data-modal="auth"]');
 
     function openModal(modal) {
@@ -31,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    [authModal, regModal].forEach(modal => {
+    [authModal, regModal, forgotModal, forgotCodeModal, forgotNewPassModal].forEach(modal => {
         if (!modal) return;
 
         modal.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay') ||
+            if (e.target.classList.contains('modal-overlay') || 
                 e.target.classList.contains('modal-close')) {
                 closeModal(modal);
             }
@@ -52,9 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (currentModal && targetModal) {
                 closeModal(currentModal);
-                setTimeout(() => {
-                    openModal(targetModal);
-                }, 200);
+                setTimeout(() => openModal(targetModal), 200);
+            }
+        });
+    });
+
+    document.querySelectorAll('.otp-input').forEach((input, index, inputs) => {
+        input.addEventListener('input', () => {
+            input.value = input.value.replace(/[^0-9]/g, '');
+            if (input.value.length === 1 && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                inputs[index - 1].focus();
             }
         });
     });

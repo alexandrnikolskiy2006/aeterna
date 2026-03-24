@@ -162,7 +162,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/auth-icon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon">
                 <h2>АВТОРИЗАЦИЯ</h2>
             </div>
             <form class="modal-form">
@@ -174,11 +174,11 @@
                 <a href="#reg-modal" class="modal-switch">
                     <span class="modal-pointer">Зарегистрироваться</span>
                 </a>
-                <a href="#" class="modal-forgot">
+                <a href="#forgot-modal" class="modal-switch">
                     <span class="modal-pointer">Забыли пароль?</span>
                 </a>
                 <a href="#" class="modal-social">
-                    <span class="modal-pointer">Войти через ВКонтакте</span>
+                    <span class="modal-pointer">Войти через Telegram</span>
                 </a>
             </div>
         </div>
@@ -188,7 +188,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/auth-icon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon">
                 <h2>РЕГИСТРАЦИЯ</h2>
             </div>
             <form class="modal-form">
@@ -204,9 +204,69 @@
                     <span class="modal-pointer">Уже есть аккаунт? Войти</span>
                 </a>
                 <a href="#" class="modal-social">
-                    <span class="modal-pointer">Зарегистрироваться через ВКонтакте</span>
+                    <span class="modal-pointer">Зарегистрироваться через Telegram</span>
                 </a>
             </div>
+        </div>
+    </div>
+    <div class="modal" id="forgot-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="forgot-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <button class="modal-close" aria-label="Закрыть">×</button>
+            <div class="modal-header">
+                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+            </div>
+            <form class="modal-form">
+                <input type="email" id="forgot-email" placeholder="Email" required autocomplete="email">
+                <button type="button" class="btn-primary" id="send-code-btn">Отправить код</button>
+            </form>
+            <div class="modal-footer">
+                <a href="#auth-modal" class="modal-switch">
+                    <span class="modal-pointer">Вернуться к авторизации</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="forgot-code-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="forgot-code-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <button class="modal-close" aria-label="Закрыть">×</button>
+            <div class="modal-header">
+                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+            </div>
+            <form class="modal-form">
+                <div class="otp-container">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                </div>
+                <button type="button" class="btn-primary" id="verify-code-btn">Подтвердить</button>
+            </form>
+            <div class="modal-footer">
+                <a href="#forgot-modal" class="modal-switch">
+                    <span class="modal-pointer">Отправить код повторно</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="forgot-newpass-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="forgot-newpass-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <button class="modal-close" aria-label="Закрыть">×</button>
+            <div class="modal-header">
+                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+            </div>
+            <form class="modal-form">
+                <input type="password" id="new-password" placeholder="Новый пароль" required>
+                <input type="password" id="confirm-password" placeholder="Подтвердите пароль" required>
+                <button type="submit" class="btn-primary">Сменить пароль</button>
+            </form>
         </div>
     </div>
 </body>

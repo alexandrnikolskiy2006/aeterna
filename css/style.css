@@ -629,7 +629,6 @@ footer {
 }
 
 .modal-switch,
-.modal-forgot,
 .modal-social {
     color: #21262A;
     margin: 0 12px;
@@ -638,4 +637,38 @@ footer {
 
 .modal-footer a:hover {
     color: #444;
+}
+
+.otp-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.otp-input {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    background: #F1F1F1;
+    outline: none;
+    transition: all 0.2s ease;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.otp-input:focus {
+    border-color: #778898;
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(33, 38, 42, 0.1);
+}
+
+.otp-input::-webkit-inner-spin-button,
+.otp-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
