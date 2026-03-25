@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const forgotModal     = document.getElementById('forgot-modal');
     const forgotCodeModal = document.getElementById('forgot-code-modal');
     const forgotNewPassModal = document.getElementById('forgot-newpass-modal');
+    const carModal        = document.getElementById('car-modal');
 
     const openAuthTriggers = document.querySelectorAll('[data-modal="auth"]');
 
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    [authModal, regModal, forgotModal, forgotCodeModal, forgotNewPassModal].forEach(modal => {
+    [authModal, regModal, forgotModal, forgotCodeModal, forgotNewPassModal, carModal].forEach(modal => {
         if (!modal) return;
 
         modal.addEventListener('click', (e) => {

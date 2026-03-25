@@ -672,3 +672,85 @@ footer {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.car-modal-dialog {
+    max-width: 1200px;
+    padding: 40px 50px;
+}
+
+.car-modal-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+}
+
+.car-left {
+    min-width: 0;
+}
+
+.car-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.car-btn {
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
+    padding: 18px;
+    font-size: 24px;
+    background: #F1F1F1;
+    color: #21262A;
+    border: 1px solid #21262A;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.car-btn:hover {
+    background: #21262A;
+    color: #F1F1F1;
+}
+
+.car-right {
+    min-width: 0;
+}
+
+.car-right h2 {
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.car-spec-line {
+    font-size: 24px;
+    letter-spacing: 13%;
+    opacity: 0.5;
+    margin-bottom: 30px;
+}
+
+.car-description {
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.car-price {
+    margin: 40px auto;
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.car-tech h3 {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.tech-item {
+    font-size: 18px;
+    opacity: 0.5;
+}

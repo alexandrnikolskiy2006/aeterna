@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         (e) => {
             if (suppressNavigationClick) {
                 e.preventDefault();
-                e.stopPropagation();
                 suppressNavigationClick = false;
             }
         },
@@ -181,6 +180,46 @@ document.addEventListener('DOMContentLoaded', () => {
         if (hasDragged) {
             goTo(index);
         }
+    });
+
+    viewport.addEventListener('pointerup', (e) => {
+        if (hasDragged) return;
+
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const slide = el.closest('.model-slide');
+        if (!slide) return;
+
+        if (slide.getAttribute('data-wheel-depth') !== '0') return;
+
+        const carModal = document.getElementById('car-modal');
+
+        document.getElementById('car-title').textContent = slide.dataset.name || '';
+        document.getElementById('car-spec-line').textContent = slide.dataset.spec || '';
+        document.getElementById('car-price').textContent = slide.dataset.price || '';
+        document.getElementById('car-description').textContent = slide.dataset.description || '';
+
+        const techList = document.getElementById('tech-list');
+        techList.innerHTML = '';
+
+        if (slide.dataset.tech) {
+            try {
+                const techArray = JSON.parse(slide.dataset.tech);
+                techArray.forEach(([label, value]) => {
+                    const div = document.createElement('div');
+                    div.className = 'tech-item';
+                    div.innerHTML = `
+                        <span>${label}</span>
+                        <span> - </span>
+                        <span>${value}</span>
+                    `;
+                    techList.appendChild(div);
+                });
+            } catch {}
+        }
+
+        carModal.classList.add('modal-active');
+        carModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
     });
 
     const ro = new ResizeObserver(() => onResize());

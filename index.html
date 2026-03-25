@@ -33,24 +33,69 @@
             </div>
             <div class="models-viewport" id="models-carousel">
                 <div class="models-track">
-                    <div class="model-slide">
-                        <a href="#">
+                    <div class="model-slide"
+                        data-model="celeste"
+                        data-name="AETERNA CELESTE"
+                        data-spec="3.0Л (420 л.с.) AT"
+                        data-price="21 900 000 ₽"
+                        data-description="Aeterna Celeste — роскошный кабриолет бренда Aeterna, созданный для тех, кто хочет ощущать дорогу, ветер и небо одновременно. Название Celeste происходит от итальянского слова celeste — «небесный», что подчёркивает главную идею автомобиля: свободу движения под открытым небом."
+                        data-tech='[
+                            ["Длина/ширина/высота / мм", "4820 / 1920 / 1380"],
+                            ["Максимальная мощность, кВт (л.с.) / об. мин.", "309 (420) / 6000"],
+                            ["Максимальный крутящий момент, Нм / об. мин.", "550 / 4500"],
+                            ["Рек. топливо", "АИ-98"],
+                            ["Максимальная скорость, км/ч", "285"],
+                            ["Время разгона 0–100 км/ч, с", "4.8"],
+                            ["Расход топлива, смешанный, л/100 км", "10.8"],
+                            ["Размерность шин", "255/40 R19; 285/35 R19"]
+                        ]'>
+                        <a href="#" class="model-link" data-modal="car">
                             <figure>
                                 <img src="images/celeste.png" alt="Aeterna Celeste">
                                 <figcaption>Aeterna Celeste</figcaption>
                             </figure>
                         </a>
                     </div>
-                    <div class="model-slide">
-                        <a href="#">
+                    <div class="model-slide"
+                        data-model="incrocio"
+                        data-name="AETERNA INCROCIO"
+                        data-spec="4.0Л (500 л.с.) AT"
+                        data-price="23 200 000 ₽"
+                        data-description="Aeterna Incrocio — концептуальный кроссовер премиум-класса, сочетающий динамику спортивного автомобиля, комфорт бизнес-седана и практичность современного SUV. Название модели происходит от латинского Aeterna — «вечный» и итальянского Incrocio — «перекрёсток», символизируя пересечение технологий, дизайна и будущего мобильности."
+                        data-tech='[
+                            ["Длина/ширина/высота / мм", "4600 / 1855 / 1685"],
+                            ["Максимальная мощность, кВт (л.с.) / об. мин.", "368 (500) / 6000"],
+                            ["Максимальный крутящий момент, Нм / об. мин.", "660 / 4500"],
+                            ["Рек. топливо", "АИ-98"],
+                            ["Максимальная скорость, км/ч", "275"],
+                            ["Время разгона 0–100 км/ч, с", "4.4"],
+                            ["Расход топлива, город/трасса/смешанный, л/100 км", "21.5 / 11.2 / 12.6"],
+                            ["Размерность шин", "255/60 R18; 255/65 R17"]
+                        ]'>
+                        <a href="#" class="model-link" data-modal="car">
                             <figure>
                                 <img src="images/incrocio.png" alt="Aeterna Incrocio">
                                 <figcaption>Aeterna Incrocio</figcaption>
                             </figure>
                         </a>
                     </div>
-                    <div class="model-slide">
-                        <a href="#">
+                    <div class="model-slide"
+                        data-model="berlina"
+                        data-name="AETERNA BERLINA"
+                        data-spec="4.0Л (550 л.с.) AT"
+                        data-price="26 500 000 ₽"
+                        data-description="Aeterna Berlina — представительский седан бренда Aeterna, сочетающий классическую элегантность итальянского дизайна и современные технологии. Название Berlina происходит из итальянской автомобильной традиции и обозначает тип кузова «седан», используемый многими европейскими моделями."
+                        data-tech='[
+                            ["Длина/ширина/высота / мм", "5120 / 1950 / 1480"],
+                            ["Максимальная мощность, кВт (л.с.) / об. мин.", "405 (550) / 6500"],
+                            ["Максимальный крутящий момент, Нм / об. мин.", "750 / 4500"],
+                            ["Рек. топливо", "АИ-98"],
+                            ["Максимальная скорость, км/ч", "305"],
+                            ["Время разгона 0–100 км/ч, с", "4.1"],
+                            ["Расход топлива, смешанный, л/100 км", "11.9"],
+                            ["Размерность шин", "265/40 R20; 295/35 R20"]
+                        ]'>
+                        <a href="#" class="model-link" data-modal="car">
                             <figure>
                                 <img src="images/berlina.png" alt="Aeterna Berlina">
                                 <figcaption>Aeterna Berlina</figcaption>
@@ -267,6 +312,35 @@
                 <input type="password" id="confirm-password" placeholder="Подтвердите пароль" required>
                 <button type="submit" class="btn-primary">Сменить пароль</button>
             </form>
+        </div>
+    </div>
+    <div class="modal" id="car-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="car-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog car-modal-dialog">
+            <button class="modal-close" aria-label="Закрыть">×</button>
+            <div class="car-modal-inner">
+                <div class="car-left">
+                    <div class="car-slider swiper">
+                        <div class="swiper-wrapper" id="car-slider-wrapper"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="car-buttons">
+                        <a href="#" class="car-btn" id="consult-btn">КОНСУЛЬТАЦИЯ</a>
+                        <a href="#" class="car-btn" id="testdrive-btn">ТЕСТ-ДРАЙВ</a>
+                    </div>
+                </div>
+                <div class="car-right">
+                    <h2 id="car-title"></h2>
+                    <p id="car-spec-line" class="car-spec-line"></p>
+                    <div class="car-description" id="car-description"></div>
+                    <div class="car-price" id="car-price"></div>
+                    <div class="car-tech">
+                        <h3>ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h3>
+                        <div class="tech-list" id="tech-list"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
