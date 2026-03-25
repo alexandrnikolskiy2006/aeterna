@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('[data-carousel-prev]');
     const nextBtn = document.querySelector('[data-carousel-next]');
 
+    const carModal = document.getElementById('car-modal');
+    const carTitle = document.getElementById('car-title');
+    const carSpec = document.getElementById('car-spec-line');
+    const carPrice = document.getElementById('car-price');
+    const carDesc = document.getElementById('car-description');
+    const techList = document.getElementById('tech-list');
+    const sliderWrapper = document.getElementById('car-slider-wrapper');
+
     if (!viewport || !track || !prevBtn || !nextBtn) return;
 
     const slides = () => Array.from(track.querySelectorAll('.model-slide'));
@@ -13,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let dragStartX = 0;
     let isPointerDown = false;
     let hasDragged = false;
+
+    let carSwiper = null;
 
     function circularDelta(i, center, n) {
         if (n <= 0) return 0;
@@ -44,14 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             slide.style.zIndex = String(z);
 
-            const depthAttr = String(Math.min(absD, 3));
-            slide.setAttribute('data-wheel-depth', depthAttr);
+            slide.setAttribute('data-wheel-depth', String(Math.min(absD, 3)));
         });
     }
 
     function setWheelDrag(px) {
-        const rounded = Math.round(px);
-        viewport.style.setProperty('--wheel-drag', `${rounded}px`);
+        viewport.style.setProperty('--wheel-drag', `${Math.round(px)}px`);
     }
 
     function goTo(newIndex, { instant } = {}) {
@@ -84,12 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
         goTo(index - 1);
     }
 
-    function onResize() {
-        goTo(index, { instant: true });
-    }
-
-    prevBtn.addEventListener('click', () => goPrev());
-    nextBtn.addEventListener('click', () => goNext());
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
 
     viewport.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
@@ -102,19 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let suppressNavigationClick = false;
-
-    viewport.addEventListener(
-        'click',
-        (e) => {
-            if (suppressNavigationClick) {
-                e.preventDefault();
-                suppressNavigationClick = false;
-            }
-        },
-        true
-    );
-
-    const dragThresholdPx = 6;
+    const DRAG_THRESHOLD = 6;
 
     viewport.addEventListener('pointerdown', (e) => {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -126,15 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             viewport.setPointerCapture(e.pointerId);
-        } catch {
-            /* ignore */
-        }
+        } catch {}
     });
 
     viewport.addEventListener('pointermove', (e) => {
         if (!isPointerDown) return;
+
         const delta = e.clientX - dragStartX;
-        if (Math.abs(delta) < dragThresholdPx) return;
+        if (Math.abs(delta) < DRAG_THRESHOLD) return;
 
         hasDragged = true;
         viewport.classList.add('wheel-dragging');
@@ -147,58 +138,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             viewport.releasePointerCapture(e.pointerId);
-        } catch {
-            /* ignore */
-        }
+        } catch {}
 
         viewport.classList.remove('wheel-dragging');
-
-        if (!hasDragged) {
-            return;
-        }
 
         const delta = e.clientX - dragStartX;
         const threshold = viewport.clientWidth * 0.15;
 
-        if (delta > threshold) {
-            goPrev();
-        } else if (delta < -threshold) {
-            goNext();
-        } else {
-            goTo(index);
-        }
-
-        if (Math.abs(delta) > 12) {
-            suppressNavigationClick = true;
-        }
-    });
-
-    viewport.addEventListener('pointercancel', () => {
-        if (!isPointerDown) return;
-        isPointerDown = false;
-        viewport.classList.remove('wheel-dragging');
         if (hasDragged) {
-            goTo(index);
-        }
-    });
+            if (delta > threshold) {
+                goPrev();
+            } else if (delta < -threshold) {
+                goNext();
+            } else {
+                goTo(index);
+            }
 
-    viewport.addEventListener('pointerup', (e) => {
-        if (hasDragged) return;
+            if (Math.abs(delta) > 12) {
+                suppressNavigationClick = true;
+            }
+
+            return;
+        }
 
         const el = document.elementFromPoint(e.clientX, e.clientY);
-        const slide = el.closest('.model-slide');
+        const slide = el?.closest('.model-slide');
         if (!slide) return;
-
         if (slide.getAttribute('data-wheel-depth') !== '0') return;
 
-        const carModal = document.getElementById('car-modal');
+        carTitle.textContent = slide.dataset.name || '';
+        carSpec.textContent = slide.dataset.spec || '';
+        carPrice.textContent = slide.dataset.price || '';
+        carDesc.textContent = slide.dataset.description || '';
 
-        document.getElementById('car-title').textContent = slide.dataset.name || '';
-        document.getElementById('car-spec-line').textContent = slide.dataset.spec || '';
-        document.getElementById('car-price').textContent = slide.dataset.price || '';
-        document.getElementById('car-description').textContent = slide.dataset.description || '';
-
-        const techList = document.getElementById('tech-list');
         techList.innerHTML = '';
 
         if (slide.dataset.tech) {
@@ -207,29 +179,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 techArray.forEach(([label, value]) => {
                     const div = document.createElement('div');
                     div.className = 'tech-item';
-                    div.innerHTML = `
-                        <span>${label}</span>
-                        <span> - </span>
-                        <span>${value}</span>
-                    `;
+                    div.textContent = `${label} - ${value}`;
                     techList.appendChild(div);
                 });
-            } catch {}
+            } catch (e) {
+                console.error('Tech parse error', e);
+            }
+        }
+
+        sliderWrapper.innerHTML = '';
+
+        if (slide.dataset.images) {
+            try {
+                const images = JSON.parse(slide.dataset.images);
+
+                images.forEach(src => {
+                    const slideEl = document.createElement('div');
+                    slideEl.className = 'swiper-slide';
+
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = slide.dataset.name || '';
+
+                    slideEl.appendChild(img);
+                    sliderWrapper.appendChild(slideEl);
+                });
+            } catch (e) {
+                console.error('Images parse error', e);
+            }
+        }
+
+        if (carSwiper) {
+            carSwiper.destroy(true, true);
         }
 
         carModal.classList.add('modal-active');
         carModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+
+        setTimeout(() => {
+            carSwiper = new Swiper('.car-slider', {
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }, 50);
     });
 
-    const ro = new ResizeObserver(() => onResize());
+    const ro = new ResizeObserver(() => goTo(index, { instant: true }));
     ro.observe(viewport);
-
-    if (typeof reducedMotion.addEventListener === 'function') {
-        reducedMotion.addEventListener('change', () => onResize());
-    } else if (typeof reducedMotion.addListener === 'function') {
-        reducedMotion.addListener(() => onResize());
-    }
 
     goTo(index, { instant: true });
 });

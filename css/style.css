@@ -20,6 +20,7 @@
 }
 
 html {
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
@@ -314,6 +315,7 @@ img {
 .button {
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
     color: #21262A;
     font-size: 28px;
@@ -680,18 +682,22 @@ footer {
 
 .car-modal-inner {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 9fr 11fr;
     gap: 60px;
 }
 
 .car-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     min-width: 0;
 }
 
 .car-buttons {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
+    padding-bottom: 10px;
 }
 
 .car-btn {
@@ -753,4 +759,21 @@ footer {
 .tech-item {
     font-size: 18px;
     opacity: 0.5;
+}
+
+.car-slider {
+    width: 100%;
+    height: auto;
+}
+
+.car-slider img {
+    width: 100%;
+    border-radius: 30px;
+    height: auto;
+    object-fit: contain;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: #778898;
 }

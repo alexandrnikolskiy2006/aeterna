@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="js/models-slider.js" defer></script>
     <script src="js/modals.js" defer></script>
 </head>
@@ -25,7 +26,7 @@
                 <h1>ГДЕ СЛОЖНЫЕ ТЕХНОЛОГИИ ОЗНАЧАЮТ ПРОСТУЮ НАДЕЖНОСТЬ</h1>
             </div>
         </section>
-        <section class="models">
+        <section class="models" id="models-section">
             <div class="model-top">
                 <button type="button" class="top-button" data-carousel-prev aria-controls="models-carousel" aria-label="Предыдущая модель"><<<</button>
                 <h2>СДЕЛАЙ СВОЙ ВЫБОР</h2>
@@ -48,6 +49,11 @@
                             ["Время разгона 0–100 км/ч, с", "4.8"],
                             ["Расход топлива, смешанный, л/100 км", "10.8"],
                             ["Размерность шин", "255/40 R19; 285/35 R19"]
+                        ]'
+                        data-images='[
+                            "images/celeste1.jpg",
+                            "images/celeste2.jpg",
+                            "images/celeste3.jpg"
                         ]'>
                         <a href="#" class="model-link" data-modal="car">
                             <figure>
@@ -71,6 +77,11 @@
                             ["Время разгона 0–100 км/ч, с", "4.4"],
                             ["Расход топлива, город/трасса/смешанный, л/100 км", "21.5 / 11.2 / 12.6"],
                             ["Размерность шин", "255/60 R18; 255/65 R17"]
+                        ]'
+                        data-images='[
+                            "images/incrocio1.jpg",
+                            "images/incrocio2.jpg",
+                            "images/incrocio3.jpg"
                         ]'>
                         <a href="#" class="model-link" data-modal="car">
                             <figure>
@@ -94,6 +105,11 @@
                             ["Время разгона 0–100 км/ч, с", "4.1"],
                             ["Расход топлива, смешанный, л/100 км", "11.9"],
                             ["Размерность шин", "265/40 R20; 295/35 R20"]
+                        ]'
+                        data-images='[
+                            "images/berlina1.jpg",
+                            "images/berlina2.jpg",
+                            "images/berlina3.jpg"
                         ]'>
                         <a href="#" class="model-link" data-modal="car">
                             <figure>
@@ -116,7 +132,7 @@
             <div class="benefits-buttons-top">
                 <a href="#" class="button">ТЕСТ-ДРАЙВ</a>
                 <a href="#" class="button">КРЕДИТОВАНИЕ</a>
-                <button class="button">АВТОМОБИЛИ В НАЛИЧИИ</button>
+                <a href="#models-section" class="button">АВТОМОБИЛИ В НАЛИЧИИ</a>
             </div>
             <div class="benefits-buttons-bottom">
                 <a href="#" class="button">ЗАПИСЬ НА ТО</a>
@@ -343,5 +359,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>
