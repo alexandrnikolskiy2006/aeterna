@@ -4,14 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('[data-carousel-prev]');
     const nextBtn = document.querySelector('[data-carousel-next]');
 
-    const carModal = document.getElementById('car-modal');
-    const carTitle = document.getElementById('car-title');
-    const carSpec = document.getElementById('car-spec-line');
-    const carPrice = document.getElementById('car-price');
-    const carDesc = document.getElementById('car-description');
-    const techList = document.getElementById('tech-list');
-    const sliderWrapper = document.getElementById('car-slider-wrapper');
-
     if (!viewport || !track || !prevBtn || !nextBtn) return;
 
     const slides = () => Array.from(track.querySelectorAll('.model-slide'));
@@ -21,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let dragStartX = 0;
     let isPointerDown = false;
     let hasDragged = false;
-
-    let carSwiper = null;
+    let activePointerId = null;
 
     function circularDelta(i, center, n) {
         if (n <= 0) return 0;
@@ -45,13 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             slide.style.setProperty('--wheel-x', String(visualStep));
 
-            let z;
-            if (absD === 0) {
-                z = 500;
-            } else {
-                z = 100 - absD * 15;
-                if (d < 0) z += 1;
-            }
+            let z = absD === 0 ? 500 : 100 - absD * 15;
+            if (d < 0) z += 1;
             slide.style.zIndex = String(z);
 
             slide.setAttribute('data-wheel-depth', String(Math.min(absD, 3)));
@@ -84,46 +70,32 @@ document.addEventListener('DOMContentLoaded', () => {
         setWheelDrag(0);
     }
 
-    function goNext() {
-        goTo(index + 1);
-    }
-
-    function goPrev() {
-        goTo(index - 1);
-    }
+    function goNext() { goTo(index + 1); }
+    function goPrev() { goTo(index - 1); }
 
     prevBtn.addEventListener('click', goPrev);
     nextBtn.addEventListener('click', goNext);
 
     viewport.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            goPrev();
-        } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            goNext();
-        }
+        if (e.repeat) return;
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
     });
 
-    let suppressNavigationClick = false;
-    const DRAG_THRESHOLD = 6;
+    const DRAG_THRESHOLD = 10;
 
     viewport.addEventListener('pointerdown', (e) => {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
-
         isPointerDown = true;
         hasDragged = false;
         dragStartX = e.clientX;
+        activePointerId = e.pointerId;
         setWheelDrag(0);
-
-        try {
-            viewport.setPointerCapture(e.pointerId);
-        } catch {}
+        if (e.pointerType !== 'touch') viewport.setPointerCapture(e.pointerId);
     });
 
     viewport.addEventListener('pointermove', (e) => {
-        if (!isPointerDown) return;
-
+        if (!isPointerDown || e.pointerId !== activePointerId) return;
         const delta = e.clientX - dragStartX;
         if (Math.abs(delta) < DRAG_THRESHOLD) return;
 
@@ -132,100 +104,38 @@ document.addEventListener('DOMContentLoaded', () => {
         setWheelDrag(delta);
     });
 
-    viewport.addEventListener('pointerup', (e) => {
-        if (!isPointerDown) return;
+    function endPointerDrag(e) {
+        if (!isPointerDown || e.pointerId !== activePointerId) return;
+
         isPointerDown = false;
-
-        try {
-            viewport.releasePointerCapture(e.pointerId);
-        } catch {}
-
+        activePointerId = null;
         viewport.classList.remove('wheel-dragging');
 
-        const delta = e.clientX - dragStartX;
-        const threshold = viewport.clientWidth * 0.15;
+        const delta = Math.abs(e.clientX - dragStartX);
 
-        if (hasDragged) {
-            if (delta > threshold) {
-                goPrev();
-            } else if (delta < -threshold) {
-                goNext();
-            } else {
-                goTo(index);
-            }
-
-            if (Math.abs(delta) > 12) {
-                suppressNavigationClick = true;
-            }
-
+        if (hasDragged && delta > viewport.clientWidth * 0.12) {
+            if (e.clientX - dragStartX > 0) goPrev();
+            else goNext();
             return;
         }
 
-        const el = document.elementFromPoint(e.clientX, e.clientY);
-        const slide = el?.closest('.model-slide');
-        if (!slide) return;
-        if (slide.getAttribute('data-wheel-depth') !== '0') return;
+        const hit = document.elementFromPoint(e.clientX, e.clientY);
+        const tappedSlide = hit?.closest('.model-slide');
 
-        carTitle.textContent = slide.dataset.name || '';
-        carSpec.textContent = slide.dataset.spec || '';
-        carPrice.textContent = slide.dataset.price || '';
-        carDesc.textContent = slide.dataset.description || '';
-
-        techList.innerHTML = '';
-
-        if (slide.dataset.tech) {
-            try {
-                const techArray = JSON.parse(slide.dataset.tech);
-                techArray.forEach(([label, value]) => {
-                    const div = document.createElement('div');
-                    div.className = 'tech-item';
-                    div.textContent = `${label} - ${value}`;
-                    techList.appendChild(div);
-                });
-            } catch (e) {
-                console.error('Tech parse error', e);
-            }
+        if (tappedSlide && tappedSlide.getAttribute('data-wheel-depth') === '0') {
+            setTimeout(() => {
+                window.openCarModal(tappedSlide);
+            }, 10);
         }
+    }
 
-        sliderWrapper.innerHTML = '';
-
-        if (slide.dataset.images) {
-            try {
-                const images = JSON.parse(slide.dataset.images);
-
-                images.forEach(src => {
-                    const slideEl = document.createElement('div');
-                    slideEl.className = 'swiper-slide';
-
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = slide.dataset.name || '';
-
-                    slideEl.appendChild(img);
-                    sliderWrapper.appendChild(slideEl);
-                });
-            } catch (e) {
-                console.error('Images parse error', e);
-            }
-        }
-
-        if (carSwiper) {
-            carSwiper.destroy(true, true);
-        }
-
-        carModal.classList.add('modal-active');
-        carModal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-
-        setTimeout(() => {
-            carSwiper = new Swiper('.car-slider', {
-                loop: true,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
-        }, 50);
+    viewport.addEventListener('pointerup', endPointerDrag);
+    viewport.addEventListener('pointercancel', () => {
+        isPointerDown = false;
+        activePointerId = null;
+        viewport.classList.remove('wheel-dragging');
+        setWheelDrag(0);
+        goTo(index);
     });
 
     const ro = new ResizeObserver(() => goTo(index, { instant: true }));

@@ -10,16 +10,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="js/models-slider.js" defer></script>
     <script src="js/modals.js" defer></script>
+    <script src="js/cars.js" defer></script>
 </head>
 <body>
     <main>
         <section class="hero">
             <div class="hero-top">
                 <a href="#" class="logo">
-                    <img src="images/favicon.svg" alt="Aeterna">
+                    <img src="images/favicon.svg" alt="Aeterna" loading="lazy">
                 </a>
                 <a href="/profile" class="user-link" data-modal="auth">
-                    <img src="images/user.svg" alt="Личный кабинет">
+                    <img src="images/user.svg" alt="Личный кабинет" loading="lazy">
                 </a>
             </div>
             <div class="hero-content">
@@ -35,85 +36,28 @@
             <div class="models-viewport" id="models-carousel">
                 <div class="models-track">
                     <div class="model-slide"
-                        data-model="celeste"
-                        data-name="AETERNA CELESTE"
-                        data-spec="3.0Л (420 л.с.) AT"
-                        data-price="21 900 000 ₽"
-                        data-description="Aeterna Celeste — роскошный кабриолет бренда Aeterna, созданный для тех, кто хочет ощущать дорогу, ветер и небо одновременно. Название Celeste происходит от итальянского слова celeste — «небесный», что подчёркивает главную идею автомобиля: свободу движения под открытым небом."
-                        data-tech='[
-                            ["Длина/ширина/высота / мм", "4820 / 1920 / 1380"],
-                            ["Максимальная мощность, кВт (л.с.) / об. мин.", "309 (420) / 6000"],
-                            ["Максимальный крутящий момент, Нм / об. мин.", "550 / 4500"],
-                            ["Рек. топливо", "АИ-98"],
-                            ["Максимальная скорость, км/ч", "285"],
-                            ["Время разгона 0–100 км/ч, с", "4.8"],
-                            ["Расход топлива, смешанный, л/100 км", "10.8"],
-                            ["Размерность шин", "255/40 R19; 285/35 R19"]
-                        ]'
-                        data-images='[
-                            "images/celeste1.jpg",
-                            "images/celeste2.jpg",
-                            "images/celeste3.jpg"
-                        ]'>
+                        data-model="celeste">
                         <a href="#" class="model-link" data-modal="car">
                             <figure>
-                                <img src="images/celeste.png" alt="Aeterna Celeste">
+                                <img src="images/celeste.png" alt="Aeterna Celeste" loading="lazy">
                                 <figcaption>Aeterna Celeste</figcaption>
                             </figure>
                         </a>
                     </div>
                     <div class="model-slide"
-                        data-model="incrocio"
-                        data-name="AETERNA INCROCIO"
-                        data-spec="4.0Л (500 л.с.) AT"
-                        data-price="23 200 000 ₽"
-                        data-description="Aeterna Incrocio — концептуальный кроссовер премиум-класса, сочетающий динамику спортивного автомобиля, комфорт бизнес-седана и практичность современного SUV. Название модели происходит от латинского Aeterna — «вечный» и итальянского Incrocio — «перекрёсток», символизируя пересечение технологий, дизайна и будущего мобильности."
-                        data-tech='[
-                            ["Длина/ширина/высота / мм", "4600 / 1855 / 1685"],
-                            ["Максимальная мощность, кВт (л.с.) / об. мин.", "368 (500) / 6000"],
-                            ["Максимальный крутящий момент, Нм / об. мин.", "660 / 4500"],
-                            ["Рек. топливо", "АИ-98"],
-                            ["Максимальная скорость, км/ч", "275"],
-                            ["Время разгона 0–100 км/ч, с", "4.4"],
-                            ["Расход топлива, город/трасса/смешанный, л/100 км", "21.5 / 11.2 / 12.6"],
-                            ["Размерность шин", "255/60 R18; 255/65 R17"]
-                        ]'
-                        data-images='[
-                            "images/incrocio1.jpg",
-                            "images/incrocio2.jpg",
-                            "images/incrocio3.jpg"
-                        ]'>
+                        data-model="incrocio">
                         <a href="#" class="model-link" data-modal="car">
                             <figure>
-                                <img src="images/incrocio.png" alt="Aeterna Incrocio">
+                                <img src="images/incrocio.png" alt="Aeterna Incrocio" loading="lazy">
                                 <figcaption>Aeterna Incrocio</figcaption>
                             </figure>
                         </a>
                     </div>
                     <div class="model-slide"
-                        data-model="berlina"
-                        data-name="AETERNA BERLINA"
-                        data-spec="4.0Л (550 л.с.) AT"
-                        data-price="26 500 000 ₽"
-                        data-description="Aeterna Berlina — представительский седан бренда Aeterna, сочетающий классическую элегантность итальянского дизайна и современные технологии. Название Berlina происходит из итальянской автомобильной традиции и обозначает тип кузова «седан», используемый многими европейскими моделями."
-                        data-tech='[
-                            ["Длина/ширина/высота / мм", "5120 / 1950 / 1480"],
-                            ["Максимальная мощность, кВт (л.с.) / об. мин.", "405 (550) / 6500"],
-                            ["Максимальный крутящий момент, Нм / об. мин.", "750 / 4500"],
-                            ["Рек. топливо", "АИ-98"],
-                            ["Максимальная скорость, км/ч", "305"],
-                            ["Время разгона 0–100 км/ч, с", "4.1"],
-                            ["Расход топлива, смешанный, л/100 км", "11.9"],
-                            ["Размерность шин", "265/40 R20; 295/35 R20"]
-                        ]'
-                        data-images='[
-                            "images/berlina1.jpg",
-                            "images/berlina2.jpg",
-                            "images/berlina3.jpg"
-                        ]'>
+                        data-model="berlina">
                         <a href="#" class="model-link" data-modal="car">
                             <figure>
-                                <img src="images/berlina.png" alt="Aeterna Berlina">
+                                <img src="images/berlina.png" alt="Aeterna Berlina" loading="lazy">
                                 <figcaption>Aeterna Berlina</figcaption>
                             </figure>
                         </a>
@@ -127,7 +71,7 @@
                     <h2>ПРИОБРЕТАЙТЕ<br>С ВЫГОДОЙ</h2>
                     <p>Быстрый поиск, сравнение, выбор<br>и предзаказ автомобилей Aeterna</p>
                 </div>
-                <img src="images/rode1.jpg" alt="Aeterna Berlina на фоне заката">
+                <img src="images/rode1.jpg" alt="Aeterna Berlina на фоне заката" loading="lazy">
             </div>
             <div class="benefits-buttons-top">
                 <a href="#" class="button">ТЕСТ-ДРАЙВ</a>
@@ -150,7 +94,7 @@
                     владения автомобилем.</p>
                 <a href="/profile" class="button" data-modal="auth">ПЕРЕЙТИ</a>
             </div>
-            <img src="images/rode2.jpg" alt="Aeterna Berlina на фоне заката">
+            <img src="images/rode2.jpg" alt="Aeterna Berlina на фоне заката" loading="lazy">
         </section>
         <section class="dealers">
             <h2>ДИЛЕРЫ AETERNA</h2>
@@ -169,7 +113,7 @@
                     <iframe 
                         src="https://yandex.com/map-widget/v1/?ll=35.741260%2C52.963053&mode=whatshere&utm_source=share&whatshere%5Bpoint%5D=35.741872%2C52.963060&whatshere%5Bzoom%5D=17&z=17" 
                         width="100%" 
-                        height="700" 
+                        height="100%" 
                         frameborder="0" 
                         allowfullscreen="true" 
                         style="position:relative;">
@@ -190,10 +134,10 @@
             </div>
             <div class="footer-social">
                 <a href="https://vk.com/kostranzes" class="social-link" target="_blank">
-                    <img src="images/vk.svg" alt="Мы во ВКонтакте">
+                    <img src="images/vk.svg" alt="Мы во ВКонтакте" loading="lazy">
                 </a>
                 <a href="https://t.me/ne_r0mAAshka" class="social-link" target="_blank">
-                    <img src="images/telegram.svg" alt="Мы в Telegram">
+                    <img src="images/telegram.svg" alt="Мы в Telegram" loading="lazy">
                 </a>
             </div>
             <div class="footer-legal">
@@ -214,7 +158,7 @@
             </div>
         </div>
         <div class="developers">
-            <img src="images/successful-success.jpg" alt="Величайшие разрабы данного шедевра">
+            <img src="images/successful-success.jpg" alt="Величайшие разрабы данного шедевра" loading="lazy">
             <p>41ПГ Никольский А.Ю. Чеканов К.С.</p>
         </div>
     </footer>
@@ -223,7 +167,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
                 <h2>АВТОРИЗАЦИЯ</h2>
             </div>
             <form class="modal-form">
@@ -249,7 +193,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
                 <h2>РЕГИСТРАЦИЯ</h2>
             </div>
             <form class="modal-form">
@@ -275,7 +219,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
                 <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
             </div>
             <form class="modal-form">
@@ -294,7 +238,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
                 <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
             </div>
             <form class="modal-form">
@@ -320,7 +264,7 @@
         <div class="modal-dialog">
             <button class="modal-close" aria-label="Закрыть">×</button>
             <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon">
+                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
                 <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
             </div>
             <form class="modal-form">
