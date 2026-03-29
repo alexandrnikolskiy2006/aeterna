@@ -57,55 +57,55 @@ img {
     min-height: 100vh;
 }
 
-.hero-top {
+.hero__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2.3125rem 2.9375rem;
 }
 
-.logo img {
+.hero__logo img {
     height: 3.9375rem;
     display: block;
 }
 
-.user-link img {
+.hero__user-link img {
     height: 2.25rem;
     display: block;
 }
 
-.hero-content {
+.hero__content {
     padding-top: 3.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero h1 {
+.hero__title {
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-size: 3.5rem;
     letter-spacing: 0;
     line-height: 1;
     font-weight: 300;
+    padding-inline: 0.625rem;
 }
 
-.model-top {
+.models__top {
     padding-top: 7rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.model-top h2 {
+.models__title {
     font-family: 'TT Ricordi Allegria', sans-serif;
-    font-size: 3rem;
+    font-size: 3.25rem;
     font-weight: 300;
     letter-spacing: 0;
     line-height: 1;
-    font-size: clamp(2rem, 4.2vw, 3.5rem);
 }
 
-.top-button {
+.models__top-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +122,7 @@ img {
     transition: all 0.3s ease;
 }
 
-.models-viewport {
+.models__viewport {
     --carousel-move-duration: 0.55s;
     --carousel-move-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
     --carousel-active-inner-nudge: 0px;
@@ -137,33 +137,33 @@ img {
     touch-action: none;
 }
 
-.models-viewport:focus-visible {
+.models__viewport:focus-visible {
     outline: 2px solid #21262A;
     outline-offset: 4px;
 }
 
-.models-viewport.wheel-dragging {
+.models__viewport--dragging {
     cursor: grabbing;
     user-select: none;
 }
 
-.models-viewport.wheel-dragging .model-slide,
-.models-viewport.wheel-skip-transition .model-slide,
-.models-viewport.wheel-dragging .model-slide figure,
-.models-viewport.wheel-skip-transition .model-slide figure,
-.models-viewport.wheel-dragging .model-slide figcaption,
-.models-viewport.wheel-skip-transition .model-slide figcaption {
+.models__viewport--dragging .models__slide,
+.models__viewport--skip-transition .models__slide,
+.models__viewport--dragging .models__figure,
+.models__viewport--skip-transition .models__figure,
+.models__viewport--dragging .models__caption,
+.models__viewport--skip-transition .models__caption {
     transition: none;
 }
 
-.models-track {
+.models__track {
     position: relative;
     width: 100%;
     min-height: clamp(27.5rem, 45vh, 45rem);
     margin: 0 auto;
 }
 
-.model-slide {
+.models__slide {
     --wheel-x: 0;
 
     position: absolute;
@@ -175,17 +175,17 @@ img {
     transform: translateX(-50%) translateX(calc(var(--wheel-x, 0) * var(--wheel-slot) + var(--wheel-drag, 0px)));
 }
 
-.model-slide > a {
+.models__slide-link {
     display: block;
     color: inherit;
 }
 
-.model-slide[data-wheel-depth="2"] > a,
-.model-slide[data-wheel-depth="3"] > a {
+.models__slide[data-wheel-depth="2"] .models__slide-link,
+.models__slide[data-wheel-depth="3"] .models__slide-link {
     pointer-events: none;
 }
 
-.model-slide figure {
+.models__figure {
     margin: 0;
     text-align: center;
     transform-origin: 50% 100%;
@@ -196,12 +196,12 @@ img {
         filter var(--carousel-move-duration) ease;
 }
 
-.model-slide img {
+.models__image {
     width: 100%;
     display: block;
 }
 
-.model-slide figcaption {
+.models__caption {
     margin-top: 1.25rem;
     font-size: 1.5rem;
     letter-spacing: 0;
@@ -213,53 +213,53 @@ img {
         visibility var(--carousel-move-duration);
 }
 
-.model-slide[data-wheel-depth="0"] figure {
+.models__slide[data-wheel-depth="0"] .models__figure {
     transform: translateX(var(--carousel-active-inner-nudge)) scale(1.65) translateY(3.25rem);
     opacity: 1;
     filter: none;
 }
 
-.model-slide[data-wheel-depth="1"] figure {
+.models__slide[data-wheel-depth="1"] .models__figure {
     transform: scale(0.9) translateY(-2.5rem);
     opacity: 0.92;
     filter: brightness(0.96);
 }
 
-.model-slide[data-wheel-depth="2"] figure {
+.models__slide[data-wheel-depth="2"] .models__figure {
     transform: scale(0.76) translateY(-3.25rem);
     opacity: 0.62;
     filter: brightness(0.88);
 }
 
-.model-slide[data-wheel-depth="3"] figure {
+.models__slide[data-wheel-depth="3"] .models__figure {
     transform: scale(0.64) translateY(-3.625rem);
     opacity: 0.45;
     filter: brightness(0.82);
 }
 
-.model-slide:not([data-wheel-depth="0"]) figcaption {
+.models__slide:not([data-wheel-depth="0"]) .models__caption {
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
     pointer-events: none;
 }
 
-.model-slide[data-wheel-depth="0"] figcaption {
+.models__slide[data-wheel-depth="0"] .models__caption {
     opacity: 1;
     visibility: visible;
 }
 
-.benefits-text {
+.benefits__text {
     margin: 0 auto;
 }
 
-.benefits-top {
+.benefits__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.benefits-text h2 {
+.benefits__title {
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-size: 3.5rem;
     font-weight: 300;
@@ -267,16 +267,16 @@ img {
     line-height: 1;
 }
 
-.benefits-text p {
+.benefits__description {
     margin-top: 0.625rem;
     font-size: 1.5rem;
 }
 
-.benefits-top img {
+.benefits__image {
     width: 50%;
 }
 
-.benefits-buttons-top {
+.benefits__buttons-top {
     padding-top: 6.25rem;
     padding-bottom: 3.75rem;
     display: flex;
@@ -284,7 +284,7 @@ img {
     align-items: center;
 }
 
-.benefits-buttons-bottom {
+.benefits__buttons-bottom {
     padding-bottom: 6.25rem;
     gap: 20rem;
     display: flex;
@@ -317,15 +317,17 @@ img {
     background: #21262A;
 }
 
-.cabinet-left {
+.cabinet__left {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
-    padding-left: 5rem;
+    text-align: center;
+    padding: 2.5rem 1rem;
 }
 
-.cabinet-left h2 {
+.cabinet__title {
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-size: 3.5rem;
     font-weight: 300;
@@ -334,22 +336,22 @@ img {
     margin-bottom: 2.5rem;
 }
 
-.cabinet-left p {
+.cabinet__description {
     font-size: 1.5rem;
-    margin-bottom: 8.75rem;
+    margin-bottom: 4rem;
 }
 
-.cabinet-left .button {
+.cabinet__left .button {
     color: #F1F1F1;
     border-color: #F1F1F1;
     transition: all 0.5s ease;
 }
 
-.cabinet img {
+.cabinet__image {
     width: 55%;
 }
 
-.dealers h2 {
+.dealers__title {
     margin: 3.75rem 0 2.5rem;
     padding-left: 5rem;
     font-family: 'TT Ricordi Allegria', sans-serif;
@@ -359,7 +361,7 @@ img {
     line-height: 1;
 }
 
-.dealers a {
+.dealers__address {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -373,7 +375,7 @@ img {
     transition: all 0.4s ease;
 }
 
-.map {
+.dealers__map {
     margin: 5rem auto;
     border: 0.0625rem solid #21262A;
     width: 90%;
@@ -382,24 +384,24 @@ img {
     overflow: hidden;
 }
 
-.map > div {
+.dealers__map > div {
     height: 100%;
 }
 
-.map iframe {
+.dealers__map iframe {
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
 }
 
-footer {
+.footer {
     display: flex;
     justify-content: space-between;
     padding-bottom: 3.75rem;
 }
 
-.footer-left {
+.footer__left {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -407,43 +409,43 @@ footer {
     padding-left: 6.25rem;
 }
 
-.footer-contacts {
+.footer__contacts {
     display: flex;
     flex-direction: column;
     gap: 0.9375rem;
     margin-bottom: 1.875rem;
 }
 
-.phones {
+.footer__phones {
     font-size: 2rem;
 }
 
-.service {
+.footer__service {
     font-size: 1.75rem;
 }
 
-.footer-social {
+.footer__social {
     display: flex;
     gap: 1.25rem;
     margin-bottom: 1.5625rem;
 }
 
-.social-link img {
+.footer__social-link img {
     width: 3.5625rem;
     transition: transform 0.3s ease;
 }
 
-.footer-legal h3 {
+.footer__legal h3 {
     font-size: 1rem;
     margin-bottom: 1.875rem;
 }
 
-.footer-legal p {
+.footer__legal-text {
     font-size: 1.25rem;
     opacity: 0.5;
 }
 
-.developers {
+.footer__developers {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -451,13 +453,13 @@ footer {
     gap: 2.5rem;
 }
 
-.developers p {
+.footer__developers-text {
     font-style: italic;
     font-size: 2rem;
     opacity: 0.8;
 }
 
-.developers img {
+.footer__developers img {
     max-width: 70%;
 }
 
@@ -474,14 +476,14 @@ footer {
     transition: opacity 0.3s ease, visibility 0s linear 0.4s;
 }
 
-.modal-active {
+.modal--active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transition: opacity 0.3s ease, visibility 0s;
 }
 
-.modal-overlay {
+.modal__overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
@@ -489,11 +491,11 @@ footer {
     transition: opacity 0.3s ease;
 }
 
-.modal-active .modal-overlay {
+.modal--active .modal__overlay {
     opacity: 1;
 }
 
-.modal-dialog {
+.modal__dialog {
     position: relative;
     width: 100%;
     max-width: 43.75rem;
@@ -507,12 +509,12 @@ footer {
     transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
-.modal-active .modal-dialog {
+.modal--active .modal__dialog {
     opacity: 1;
     transform: scaleY(1) translateY(0);
 }
 
-.modal-close {
+.modal__close {
     position: absolute;
     top: 0.9375rem;
     right: 2.1875rem;
@@ -525,18 +527,18 @@ footer {
     transition: color 0.2s;
 }
 
-.modal-header {
+.modal__header {
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.modal-icon {
+.modal__icon {
     width: 5rem;
     height: 5rem;
     margin-bottom: 1rem;
 }
 
-.modal h2 {
+.modal__title {
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-weight: 300;
     font-size: 2rem;
@@ -545,13 +547,13 @@ footer {
     line-height: 1.2;
 }
 
-.modal-form {
+.modal__form {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
 }
 
-.modal-form input {
+.modal__input {
     margin: 0 auto;
     padding: 1rem 1.25rem;
     width: 80%;
@@ -561,7 +563,7 @@ footer {
     outline: none;
 }
 
-.btn-primary {
+.modal__btn {
     margin: 0 auto;
     width: 60%;
     padding: 1.125rem;
@@ -574,7 +576,7 @@ footer {
     transition: background 0.3s, color 0.3s;
 }
 
-.modal-footer {
+.modal__footer {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -583,30 +585,30 @@ footer {
     gap: 1.5rem;
 }
 
-.modal-footer a {
+.modal__footer a {
     text-decoration: none;
     pointer-events: none;
 }
 
-.modal-pointer {
+.modal__pointer {
     pointer-events: all;
 }
 
-.modal-switch,
-.modal-social {
+.modal__switch,
+.modal__social {
     color: #21262A;
     margin: 0 0.75rem;
     opacity: 0.5;
 }
 
-.otp-container {
+.modal__otp-container {
     margin: 0 auto;
     display: flex;
     justify-content: center;
     gap: 0.75rem;
 }
 
-.otp-input {
+.modal__otp-input {
     width: 3.75rem;
     height: 3.75rem;
     text-align: center;
@@ -621,44 +623,44 @@ footer {
     -moz-appearance: textfield;
 }
 
-.otp-input:focus {
+.modal__otp-input:focus {
     border-color: #778898;
     transform: scale(1.03);
     box-shadow: 0 0 0 3px rgba(33, 38, 42, 0.1);
 }
 
-.otp-input::-webkit-inner-spin-button,
-.otp-input::-webkit-outer-spin-button {
+.modal__otp-input::-webkit-inner-spin-button,
+.modal__otp-input::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-.car-modal-dialog {
+.modal--car .modal__dialog {
     max-width: 75rem;
     padding: 2.5rem 3.125rem;
 }
 
-.car-modal-inner {
+.modal__car-inner {
     display: grid;
     grid-template-columns: 9fr 11fr;
     gap: 3.75rem;
 }
 
-.car-left {
+.modal__car-left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-width: 0;
 }
 
-.car-buttons {
+.modal__car-buttons {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
     padding-bottom: 0.625rem;
 }
 
-.car-btn {
+.modal__car-btn {
     text-align: center;
     margin: 0 auto;
     width: 60%;
@@ -672,30 +674,32 @@ footer {
     transition: background 0.3s, color 0.3s;
 }
 
-.car-right {
+.modal__car-right {
     min-width: 0;
 }
 
-.car-right h2 {
+.modal__car-title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-weight: 300;
     font-size: 3.5rem;
     letter-spacing: 0;
     line-height: 1;
 }
 
-.car-spec-line {
+.modal__car-spec {
     font-size: 1.5rem;
     letter-spacing: 13%;
     opacity: 0.5;
     margin-bottom: 1.875rem;
 }
 
-.car-description {
+.modal__car-description {
     font-size: 1.125rem;
     line-height: 1;
     letter-spacing: 0;
 }
 
-.car-price {
+.modal__car-price {
     margin: 2.5rem auto;
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-size: 2rem;
@@ -703,23 +707,23 @@ footer {
     line-height: 1;
 }
 
-.car-tech h3 {
+.modal__car-tech h3 {
     font-size: 1.25rem;
     color: #000000;
     margin-bottom: 1.25rem;
 }
 
-.tech-item {
+.modal__tech-item {
     font-size: 1.125rem;
     opacity: 0.5;
 }
 
-.car-slider {
+.modal__car-slider {
     width: 100%;
     height: auto;
 }
 
-.car-slider img {
+.modal__car-slider img {
     width: 100%;
     border-radius: 1.875rem;
     height: auto;
@@ -731,7 +735,7 @@ footer {
         font-size: 12px;
     }
     
-    .benefits-top {
+    .benefits__top {
         flex-direction: column;
         align-items: stretch;
         gap: 2rem;
@@ -739,18 +743,22 @@ footer {
         padding-right: 1.5rem;
     }
 
-    .benefits-text {
+    .benefits__text {
         max-width: 100%;
     }
 
-    .benefits-top img {
+    .benefits__title {
+        text-align: center;
+    }
+
+    .benefits__image {
         width: 100%;
         max-width: 36rem;
         margin: 0 auto;
     }
 
-    .benefits-buttons-top,
-    .benefits-buttons-bottom {
+    .benefits__buttons-top,
+    .benefits__buttons-bottom {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.25rem 1.5rem;
@@ -758,7 +766,7 @@ footer {
         padding-right: 1rem;
     }
 
-    .benefits-buttons-bottom {
+    .benefits__buttons-bottom {
         gap: 1.25rem 2rem;
     }
 
@@ -767,27 +775,32 @@ footer {
         align-items: stretch;
     }
 
-    .cabinet-left {
+    .cabinet__left {
         padding: 3rem 2rem;
         align-items: center;
         text-align: center;
     }
 
-    .cabinet-left p {
+    .cabinet__description {
         margin-bottom: 2.5rem;
     }
 
-    .cabinet img {
-        width: 100%;
-        max-width: 100%;
+    .cabinet__image {
+        display: none;
     }
 
-    .dealers h2 {
+    .dealers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dealers__title {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
 
-    .dealers a {
+    .dealers__address {
         margin-left: 1.5rem;
         margin-right: 1.5rem;
         width: calc(100% - 3rem);
@@ -797,30 +810,26 @@ footer {
 }
 
 @media (max-width: 992px) {
-    .hero {
-        min-height: 75vh;
-    }
-
-    .model-top {
+    .models__top {
         padding-top: 5rem;
     }
 
-    .top-button {
+    .models__top-button {
         display: none;
         font-size: clamp(2rem, 6vw, 4rem);
         width: min(18.75rem, 88vw);
     }
 
-    .models-viewport {
+    .models__viewport {
         --wheel-slot: clamp(14rem, 52vw, 28rem);
         padding-bottom: 6rem;
     }
 
-    .models-track {
+    .models__track {
         min-height: clamp(20rem, 33vh, 32rem);
     }
 
-    footer {
+    .footer {
         flex-direction: column;
         align-items: center;
         gap: 2.5rem;
@@ -828,42 +837,50 @@ footer {
         padding-right: 1rem;
     }
 
-    .footer-left {
+    .footer__left {
         align-items: center;
         text-align: center;
         max-width: 100%;
     }
 
-    .modal-dialog {
+    .modal__dialog {
         max-width: min(43.75rem, calc(100vw - 2rem));
         margin: 0 1rem;
     }
 
-    .car-modal-dialog {
+    .modal--car .modal__dialog {
         max-width: min(75rem, calc(100vw - 2rem));
         padding: 2rem 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-top {
+    .hero__top {
         padding: 1.25rem 1rem;
     }
 
-    .hero h1 {
+    .hero__title {
         font-size: 2.5rem;
     }
 
-    .logo img {
+    .hero__logo img {
         height: 3rem;
     }
 
-    .user-link img {
+    .hero__user-link img {
         height: 1.875rem;
     }
 
-    .models-track {
+    .models__caption {
+        font-size: 1.125rem;
+    }
+
+    .models__track {
         min-height: clamp(17rem, 28vh, 26rem);
+    }
+
+    .benefits__buttons-top {
+        padding-bottom: 1rem;
     }
 
     .dealers {
@@ -872,14 +889,14 @@ footer {
         box-sizing: border-box;
     }
 
-    .dealers h2 {
+    .dealers__title {
         margin-left: 0;
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
     }
 
-    .dealers a {
+    .dealers__address {
         font-size: 1.25rem;
         margin-left: 0;
         margin-right: 0;
@@ -887,7 +904,7 @@ footer {
         box-sizing: border-box;
     }
 
-    .map {
+    .dealers__map {
         width: calc(100% - 2.5rem);
         height: min(50vh, 24rem);
         min-height: 260px;
@@ -895,130 +912,132 @@ footer {
         margin-right: auto;
     }
 
-    .map > div {
+    .dealers__map > div {
         height: 100%;
     }
 
-    .map iframe {
+    .dealers__map iframe {
         height: 100% !important;
         min-height: 260px;
     }
 
-    .footer-left {
+    .footer__left {
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
-    footer {
+    .footer {
         display: block;
     }
 
-    .developers img {
+    .footer__developers img {
         padding-top: 2rem;
     }
 
-    .modal-dialog {
+    .modal__dialog {
         padding: 2rem 1.25rem;
     }
 
-    .modal-form input {
+    .modal__input {
         font-size: 1.5rem;
         max-width: 100%;
         box-sizing: border-box;
     }
 
-    .btn-primary {
+    .modal__btn {
         font-size: 1.125rem;
         max-width: 100%;
         box-sizing: border-box;
     }
 
-    .car-modal-inner {
+    .modal__car-inner {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
 
-    .car-modal-dialog {
+    .modal--car .modal__dialog {
         max-width: 80%;
         max-height: 80%;
         overflow-y: auto;
     }
 
-    .car-left {
+    .modal__car-left {
         order: -1;
     }
 
-    .car-buttons {
+    .modal__car-buttons {
         padding-top: 1.25rem;
     }
 
-    .car-btn {
+    .modal__car-btn {
         width: 100%;
         max-width: 20rem;
     }
 
-    .car-right h2 {
+    .modal__car-title {
         font-size: clamp(1.75rem, 6vw, 3.5rem);
     }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        min-height: 60vh;
+    .hero__title {
+        font-size: 2.5rem;
     }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .model-top {
+    .models__top {
         display: flex;
         padding-top: 3.5rem;
         gap: 1rem;
     }
 
-    .top-button {
+    .models__title {
+        font-size: 2.5rem;
+        padding-inline: 1rem;
+    }
+
+    .models__top-button {
         width: min(100%, 16rem);
         height: 3.25rem;
         font-size: 2rem;
     }
 
-    .models-viewport {
+    .models__viewport {
         --wheel-slot: clamp(11rem, 72vw, 18rem);
         padding-bottom: 4rem;
     }
 
-    .models-track {
+    .models__track {
         min-height: clamp(17rem, 22vh, 26rem);
     }
 
-    .model-slide {
+    .models__slide {
         width: clamp(12rem, 78vw, 22rem);
     }
 
-    .model-slide[data-wheel-depth="0"] figure {
+    .models__slide[data-wheel-depth="0"] .models__figure {
         transform: translateX(var(--carousel-active-inner-nudge)) scale(1.28) translateY(1.75rem);
     }
 
-    .model-slide figcaption {
+    .models__caption {
         font-size: 1.125rem;
         min-height: 2.25em;
     }
 
-    .benefits-text h2 {
+    .benefits__title {
         font-size: 2.5rem;
+        text-align: center;
     }
 
-    .benefits-text p {
+    .benefits__description {
         font-size: 1.25rem;
     }
 
-    .benefits-buttons-top {
+    .benefits__buttons-top {
         padding-top: 3rem;
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
     }
 
-    .benefits-buttons-bottom {
+    .benefits__buttons-bottom {
         padding-bottom: 3rem;
     }
 
@@ -1032,71 +1051,67 @@ footer {
         box-sizing: border-box;
     }
 
-    .cabinet img {
-        display: none;
-    }
-
-    .dealers h2 {
+    .dealers__title {
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 0;
     }
 
-    .dealers a {
+    .dealers__address {
         display: none;
     }
 
-    .map {
+    .dealers__map {
         width: calc(100% - 1.5rem);
         height: min(45vh, 20rem);
         min-height: 220px;
     }
 
-    .map iframe {
+    .dealers__map iframe {
         min-height: 220px;
     }
 
-    footer {
+    .footer {
         display: block;
     }
 
-    .developers {
+    .footer__developers {
         padding-top: 2rem;
     }
 
-    .developers p {
+    .footer__developers-text {
         font-size: 1.5rem;
     }
 
-    .modal-close {
+    .modal__close {
         right: 1rem;
         font-size: 2.5rem;
     }
 
-    .modal-header {
+    .modal__header {
         margin-bottom: 2rem;
     }
 
-    .otp-container {
+    .modal__otp-container {
         flex-wrap: wrap;
         gap: 0.5rem;
     }
 
-    .otp-input {
+    .modal__otp-input {
         width: 2.75rem;
         height: 2.75rem;
         font-size: 1.25rem;
     }
 
-    .car-modal-dialog {
+    .modal--car .modal__dialog {
         padding: 1.5rem 1rem;
     }
 
-    .car-buttons {
+    .modal__car-buttons {
         padding-top: 1rem;
     }
 
-    .car-btn {
+    .modal__car-btn {
         max-width: 70%;
     }
 
@@ -1107,25 +1122,25 @@ footer {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .top-button:hover {
+    .models__top-button:hover {
         color: #778898;
         border-color: #778898;
     }
 
-    .model-slide[data-wheel-depth="1"]:hover figure {
+    .models__slide[data-wheel-depth="1"]:hover .models__figure {
         transform: scale(0.95) translateY(-2.75rem);
         opacity: 0.96;
         filter: brightness(1);
     }
 
-    .model-slide[data-wheel-depth="1"]:hover figcaption {
+    .models__slide[data-wheel-depth="1"]:hover .models__caption {
         opacity: 1;
         visibility: visible;
         font-size: 1.75rem;
         margin-top: 1.25rem;
     }
 
-    .model-slide[data-wheel-depth="0"]:hover figure {
+    .models__slide[data-wheel-depth="0"]:hover .models__figure {
         transform: translateX(var(--carousel-active-inner-nudge)) scale(1.75) translateY(3.25rem);
         opacity: 0.95;
     }
@@ -1135,31 +1150,31 @@ footer {
         background: #21262A;
     }
 
-    .cabinet-left .button:hover {
+    .cabinet__left .button:hover {
         color: #21262A;
         background: #F1F1F1;
     }
 
-    .dealers a:hover {
+    .dealers__address:hover {
         color: #778898;
         border-color: #778898;
         transform: scale(1.03);
     }
 
-    .social-link:hover img {
+    .footer__social-link:hover img {
         transform: scale(1.1);
     }
 
-    .modal-close:hover {
+    .modal__close:hover {
         color: #778898;
     }
 
-    .btn-primary:hover {
+    .modal__btn:hover {
         background: #21262A;
         color: #F1F1F1;
     }
 
-    .car-btn:hover {
+    .modal__car-btn:hover {
         background: #21262A;
         color: #F1F1F1;
     }

@@ -15,78 +15,78 @@
 <body>
     <main>
         <section class="hero">
-            <div class="hero-top">
-                <a href="#" class="logo">
+            <div class="hero__top">
+                <a href="#" class="hero__logo">
                     <img src="images/favicon.svg" alt="Aeterna" loading="lazy">
                 </a>
-                <a href="/profile" class="user-link" data-modal="auth">
+                <a href="/profile" class="hero__user-link" data-modal="auth">
                     <img src="images/user.svg" alt="Личный кабинет" loading="lazy">
                 </a>
             </div>
-            <div class="hero-content">
-                <h1>ГДЕ СЛОЖНЫЕ ТЕХНОЛОГИИ ОЗНАЧАЮТ ПРОСТУЮ НАДЕЖНОСТЬ</h1>
+            <div class="hero__content">
+                <h1 class="hero__title">ГДЕ СЛОЖНЫЕ ТЕХНОЛОГИИ ОЗНАЧАЮТ ПРОСТУЮ НАДЕЖНОСТЬ</h1>
             </div>
         </section>
+
         <section class="models" id="models-section">
-            <div class="model-top">
-                <button type="button" class="top-button" data-carousel-prev aria-controls="models-carousel" aria-label="Предыдущая модель"><<<</button>
-                <h2>СДЕЛАЙ СВОЙ ВЫБОР</h2>
-                <button type="button" class="top-button" data-carousel-next aria-controls="models-carousel" aria-label="Следующая модель">>>></button>
+            <div class="models__top">
+                <button type="button" class="models__top-button" data-carousel-prev aria-controls="models-carousel" aria-label="Предыдущая модель"><<<</button>
+                <h2 class="models__title">СДЕЛАЙ СВОЙ ВЫБОР</h2>
+                <button type="button" class="models__top-button" data-carousel-next aria-controls="models-carousel" aria-label="Следующая модель">>>></button>
             </div>
-            <div class="models-viewport" id="models-carousel">
-                <div class="models-track">
-                    <div class="model-slide"
-                        data-model="celeste">
-                        <a href="#" class="model-link" data-modal="car">
-                            <figure>
-                                <img src="images/celeste.png" alt="Aeterna Celeste" loading="lazy">
-                                <figcaption>Aeterna Celeste</figcaption>
+            <div class="models__viewport" id="models-carousel">
+                <div class="models__track">
+                    <div class="models__slide" data-model="celeste">
+                        <a href="#" class="models__slide-link" data-modal="car">
+                            <figure class="models__figure">
+                                <img src="images/celeste.png" alt="Aeterna Celeste" class="models__image" loading="lazy">
+                                <figcaption class="models__caption">Aeterna Celeste</figcaption>
                             </figure>
                         </a>
                     </div>
-                    <div class="model-slide"
-                        data-model="incrocio">
-                        <a href="#" class="model-link" data-modal="car">
-                            <figure>
-                                <img src="images/incrocio.png" alt="Aeterna Incrocio" loading="lazy">
-                                <figcaption>Aeterna Incrocio</figcaption>
+                    <div class="models__slide" data-model="incrocio">
+                        <a href="#" class="models__slide-link" data-modal="car">
+                            <figure class="models__figure">
+                                <img src="images/incrocio.png" alt="Aeterna Incrocio" class="models__image" loading="lazy">
+                                <figcaption class="models__caption">Aeterna Incrocio</figcaption>
                             </figure>
                         </a>
                     </div>
-                    <div class="model-slide"
-                        data-model="berlina">
-                        <a href="#" class="model-link" data-modal="car">
-                            <figure>
-                                <img src="images/berlina.png" alt="Aeterna Berlina" loading="lazy">
-                                <figcaption>Aeterna Berlina</figcaption>
+                    <div class="models__slide" data-model="berlina">
+                        <a href="#" class="models__slide-link" data-modal="car">
+                            <figure class="models__figure">
+                                <img src="images/berlina.png" alt="Aeterna Berlina" class="models__image" loading="lazy">
+                                <figcaption class="models__caption">Aeterna Berlina</figcaption>
                             </figure>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
+
         <section class="benefits">
-            <div class="benefits-top">
-                <div class="benefits-text">
-                    <h2>ПРИОБРЕТАЙТЕ<br>С ВЫГОДОЙ</h2>
-                    <p>Быстрый поиск, сравнение, выбор<br>и предзаказ автомобилей Aeterna</p>
+            <div class="benefits__top">
+                <div class="benefits__text">
+                    <h2 class="benefits__title">ПРИОБРЕТАЙТЕ<br>С ВЫГОДОЙ</h2>
+                    <p class="benefits__description">Быстрый поиск, сравнение, выбор<br>и предзаказ автомобилей Aeterna</p>
                 </div>
-                <img src="images/rode1.jpg" alt="Aeterna Berlina на фоне заката" loading="lazy">
+                <img src="images/rode1.jpg" alt="Aeterna Berlina на фоне заката" class="benefits__image" loading="lazy">
             </div>
-            <div class="benefits-buttons-top">
+            <div class="benefits__buttons-top">
                 <a href="#" class="button">ТЕСТ-ДРАЙВ</a>
                 <a href="#" class="button">КРЕДИТОВАНИЕ</a>
                 <a href="#models-section" class="button">АВТОМОБИЛИ В НАЛИЧИИ</a>
             </div>
-            <div class="benefits-buttons-bottom">
+            <div class="benefits__buttons-bottom">
                 <a href="#" class="button">ЗАПИСЬ НА ТО</a>
                 <a href="#" class="button">СТРАХОВАНИЕ</a>
             </div>
         </section>
+
         <section class="cabinet">
-            <div class="cabinet-left">
-                <h2>ЛИЧНЫЙ КАБИНЕТ<br>ВЛАДЕЛЬЦА</h2>
-                <p>Личный кабинет для владельца<br>
+            <div class="cabinet__left">
+                <h2 class="cabinet__title">ЛИЧНЫЙ КАБИНЕТ<br>ВЛАДЕЛЬЦА</h2>
+                <p class="cabinet__description">Личный кабинет для владельца<br>
                     автомобиля предоставляет<br>
                     эксклюзивный доступ к различной<br>
                     информации и функционалу,<br>
@@ -94,16 +94,15 @@
                     владения автомобилем.</p>
                 <a href="/profile" class="button" data-modal="auth">ПЕРЕЙТИ</a>
             </div>
-            <img src="images/rode2.jpg" alt="Aeterna Berlina на фоне заката" loading="lazy">
+            <img src="images/rode2.jpg" alt="Aeterna Berlina на фоне заката" class="cabinet__image" loading="lazy">
         </section>
+
         <section class="dealers">
-            <h2>ДИЛЕРЫ AETERNA</h2>
-            <a href="https://yandex.com/maps/-/CPR5BLJr"
-            target="_blank"
-            rel="noopener">
+            <h2 class="dealers__title">ДИЛЕРЫ AETERNA</h2>
+            <a href="https://yandex.com/maps/-/CPR5BLJr" class="dealers__address" target="_blank" rel="noopener noreferrer">
                 пгт. Нарышкино, 1-Ленинский переулок, 10
             </a>
-            <div class="map">
+            <div class="dealers__map">
                 <div style="position:relative;overflow:hidden;">
                     <a href="https://yandex.com/maps/10772/oryol-oblast/?utm_medium=mapframe&utm_source=maps" 
                     style="color:#eee;font-size:12px;position:absolute;top:0px;">Орловская область</a>
@@ -122,27 +121,28 @@
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-left">
-            <div class="footer-contacts">
-                <p class="phones">
+
+    <footer class="footer">
+        <div class="footer__left">
+            <div class="footer__contacts">
+                <p class="footer__phones">
                     8 953 501-01-02<br>8 953 473-08-31
                 </p>
-                <p class="service">
+                <p class="footer__service">
                     Клиентская служба Aeterna<br>звонок по всей России бесплатный
                 </p>
             </div>
-            <div class="footer-social">
-                <a href="https://vk.com/kostranzes" class="social-link" target="_blank">
+            <div class="footer__social">
+                <a href="https://vk.com/kostranzes" class="footer__social-link" target="_blank" rel="noopener noreferrer">
                     <img src="images/vk.svg" alt="Мы во ВКонтакте" loading="lazy">
                 </a>
-                <a href="https://t.me/ne_r0mAAshka" class="social-link" target="_blank">
+                <a href="https://t.me/ne_r0mAAshka" class="footer__social-link" target="_blank" rel="noopener noreferrer">
                     <img src="images/telegram.svg" alt="Мы в Telegram" loading="lazy">
                 </a>
             </div>
-            <div class="footer-legal">
-                <h3>&copy; 2026 АО «AETERNA»</h3>
-                <p>
+            <div class="footer__legal">
+                <h3 class="footer__copyright">&copy; 2026 АО «AETERNA»</h3>
+                <p class="footer__legal-text">
                     ПРАВОВАЯ ИНФОРМАЦИЯ<br>
                     *- Рекомендованные розничные цены указаны с учётом максимальной 
                     выгоды по действующим акциям.<br><br>
@@ -154,155 +154,163 @@
                     Гражданского кодекса Российской Федерации. Для получения 
                     подробной информации обращайтесь к официальным дилерам 
                     АО «AETERNA».<br>
-                    Политика АО «AETERNA» в отношении персональных данных.</p>
+                    Политика АО «AETERNA» в отношении персональных данных.
+                </p>
             </div>
         </div>
-        <div class="developers">
+        <div class="footer__developers">
             <img src="images/successful-success.jpg" alt="Величайшие разрабы данного шедевра" loading="lazy">
-            <p>41ПГ Никольский А.Ю. Чеканов К.С.</p>
+            <p class="footer__developers-text">41ПГ Никольский А.Ю. Чеканов К.С.</p>
         </div>
     </footer>
+
     <div class="modal" id="auth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="auth-title">
-        <div class="modal-overlay"></div>
-        <div class="modal-dialog">
-            <button class="modal-close" aria-label="Закрыть">×</button>
-            <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
-                <h2>АВТОРИЗАЦИЯ</h2>
+        <div class="modal__overlay"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <div class="modal__header">
+                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <h2 class="modal__title" id="auth-title">АВТОРИЗАЦИЯ</h2>
             </div>
-            <form class="modal-form">
-                <input type="text" id="auth-login" placeholder="Телефон/email" required>
-                <input type="password" id="auth-password" placeholder="Пароль" required>
-                <button type="submit" class="btn-primary">Войти</button>
+            <form class="modal__form">
+                <input type="text" id="auth-login" class="modal__input" placeholder="Телефон/email" required>
+                <input type="password" id="auth-password" class="modal__input" placeholder="Пароль" required>
+                <button type="submit" class="modal__btn">Войти</button>
             </form>
-            <div class="modal-footer">
-                <a href="#reg-modal" class="modal-switch">
-                    <span class="modal-pointer">Зарегистрироваться</span>
+            <div class="modal__footer">
+                <a href="#reg-modal" class="modal__switch">
+                    <span class="modal__pointer">Зарегистрироваться</span>
                 </a>
-                <a href="#forgot-modal" class="modal-switch">
-                    <span class="modal-pointer">Забыли пароль?</span>
+                <a href="#forgot-modal" class="modal__switch">
+                    <span class="modal__pointer">Забыли пароль?</span>
                 </a>
-                <a href="#" class="modal-social">
-                    <span class="modal-pointer">Войти через Telegram</span>
+                <a href="#" class="modal__social">
+                    <span class="modal__pointer">Войти через Telegram</span>
                 </a>
             </div>
         </div>
     </div>
+
     <div class="modal" id="reg-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reg-title">
-        <div class="modal-overlay"></div>
-        <div class="modal-dialog">
-            <button class="modal-close" aria-label="Закрыть">×</button>
-            <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
-                <h2>РЕГИСТРАЦИЯ</h2>
+        <div class="modal__overlay"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <div class="modal__header">
+                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <h2 class="modal__title" id="reg-title">РЕГИСТРАЦИЯ</h2>
             </div>
-            <form class="modal-form">
-                <input type="text" id="reg-name" placeholder="Имя" required>
-                <input type="text" id="reg-surname" placeholder="Фамилия" required>
-                <input type="tel" id="reg-phone" placeholder="Телефон" required>
-                <input type="email" id="reg-email" placeholder="Email" required>
-                <input type="password" id="reg-password" placeholder="Пароль" required>
-                <button type="submit" class="btn-primary">Зарегистрироваться</button>
+            <form class="modal__form">
+                <input type="text" id="reg-name" class="modal__input" placeholder="Имя" required>
+                <input type="text" id="reg-surname" class="modal__input" placeholder="Фамилия" required>
+                <input type="tel" id="reg-phone" class="modal__input" placeholder="Телефон" required>
+                <input type="email" id="reg-email" class="modal__input" placeholder="Email" required>
+                <input type="password" id="reg-password" class="modal__input" placeholder="Пароль" required>
+                <button type="submit" class="modal__btn">Зарегистрироваться</button>
             </form>
-            <div class="modal-footer">
-                <a href="#auth-modal" class="modal-switch">
-                    <span class="modal-pointer">Уже есть аккаунт? Войти</span>
+            <div class="modal__footer">
+                <a href="#auth-modal" class="modal__switch">
+                    <span class="modal__pointer">Уже есть аккаунт? Войти</span>
                 </a>
-                <a href="#" class="modal-social">
-                    <span class="modal-pointer">Зарегистрироваться через Telegram</span>
+                <a href="#" class="modal__social">
+                    <span class="modal__pointer">Зарегистрироваться через Telegram</span>
                 </a>
             </div>
         </div>
     </div>
+
     <div class="modal" id="forgot-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="forgot-title">
-        <div class="modal-overlay"></div>
-        <div class="modal-dialog">
-            <button class="modal-close" aria-label="Закрыть">×</button>
-            <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
-                <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+        <div class="modal__overlay"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <div class="modal__header">
+                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <h2 class="modal__title" id="forgot-title">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
             </div>
-            <form class="modal-form">
-                <input type="email" id="forgot-email" placeholder="Email" required autocomplete="email">
-                <button type="button" class="btn-primary" id="send-code-btn">Отправить код</button>
+            <form class="modal__form">
+                <input type="email" id="forgot-email" class="modal__input" placeholder="Email" required autocomplete="email">
+                <button type="button" class="modal__btn" id="send-code-btn">Отправить код</button>
             </form>
-            <div class="modal-footer">
-                <a href="#auth-modal" class="modal-switch">
-                    <span class="modal-pointer">Вернуться к авторизации</span>
+            <div class="modal__footer">
+                <a href="#auth-modal" class="modal__switch">
+                    <span class="modal__pointer">Вернуться к авторизации</span>
                 </a>
             </div>
         </div>
     </div>
+
     <div class="modal" id="forgot-code-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="forgot-code-title">
-        <div class="modal-overlay"></div>
-        <div class="modal-dialog">
-            <button class="modal-close" aria-label="Закрыть">×</button>
-            <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
-                <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+        <div class="modal__overlay"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <div class="modal__header">
+                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <h2 class="modal__title" id="forgot-code-title">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
             </div>
-            <form class="modal-form">
-                <div class="otp-container">
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
-                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+            <form class="modal__form">
+                <div class="modal__otp-container">
+                    <input type="text" class="modal__otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="modal__otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="modal__otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="modal__otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="modal__otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
+                    <input type="text" class="modal__otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off" required>
                 </div>
-                <button type="button" class="btn-primary" id="verify-code-btn">Подтвердить</button>
+                <button type="button" class="modal__btn" id="verify-code-btn">Подтвердить</button>
             </form>
-            <div class="modal-footer">
-                <a href="#forgot-modal" class="modal-switch">
-                    <span class="modal-pointer">Отправить код повторно</span>
+            <div class="modal__footer">
+                <a href="#forgot-modal" class="modal__switch">
+                    <span class="modal__pointer">Отправить код повторно</span>
                 </a>
             </div>
         </div>
     </div>
+
     <div class="modal" id="forgot-newpass-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="forgot-newpass-title">
-        <div class="modal-overlay"></div>
-        <div class="modal-dialog">
-            <button class="modal-close" aria-label="Закрыть">×</button>
-            <div class="modal-header">
-                <img src="images/favicon.svg" alt="" class="modal-icon" loading="lazy">
-                <h2>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
+        <div class="modal__overlay"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <div class="modal__header">
+                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <h2 class="modal__title" id="forgot-newpass-title">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</h2>
             </div>
-            <form class="modal-form">
-                <input type="password" id="new-password" placeholder="Новый пароль" required>
-                <input type="password" id="confirm-password" placeholder="Подтвердите пароль" required>
-                <button type="submit" class="btn-primary">Сменить пароль</button>
+            <form class="modal__form">
+                <input type="password" id="new-password" class="modal__input" placeholder="Новый пароль" required>
+                <input type="password" id="confirm-password" class="modal__input" placeholder="Подтвердите пароль" required>
+                <button type="submit" class="modal__btn">Сменить пароль</button>
             </form>
         </div>
     </div>
-    <div class="modal" id="car-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="car-title">
-        <div class="modal-overlay"></div>
-        <div class="modal-dialog car-modal-dialog">
-            <button class="modal-close" aria-label="Закрыть">×</button>
-            <div class="car-modal-inner">
-                <div class="car-left">
-                    <div class="car-slider swiper">
+
+    <div class="modal modal--car" id="car-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="car-title">
+        <div class="modal__overlay"></div>
+        <div class="modal__dialog">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <div class="modal__car-inner">
+                <div class="modal__car-left">
+                    <div class="modal__car-slider swiper">
                         <div class="swiper-wrapper" id="car-slider-wrapper"></div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-                    <div class="car-buttons">
-                        <a href="#" class="car-btn" id="consult-btn">КОНСУЛЬТАЦИЯ</a>
-                        <a href="#" class="car-btn" id="testdrive-btn">ТЕСТ-ДРАЙВ</a>
+                    <div class="modal__car-buttons">
+                        <a href="#" class="modal__car-btn" id="consult-btn">КОНСУЛЬТАЦИЯ</a>
+                        <a href="#" class="modal__car-btn" id="testdrive-btn">ТЕСТ-ДРАЙВ</a>
                     </div>
                 </div>
-                <div class="car-right">
-                    <h2 id="car-title"></h2>
-                    <p id="car-spec-line" class="car-spec-line"></p>
-                    <div class="car-description" id="car-description"></div>
-                    <div class="car-price" id="car-price"></div>
-                    <div class="car-tech">
-                        <h3>ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h3>
-                        <div class="tech-list" id="tech-list"></div>
+                <div class="modal__car-right">
+                    <h2 id="car-title" class="modal__car-title"></h2>
+                    <p id="car-spec-line" class="modal__car-spec"></p>
+                    <div id="car-description" class="modal__car-description"></div>
+                    <div id="car-price" class="modal__car-price"></div>
+                    <div class="modal__car-tech">
+                        <h3 class="modal__car-tech-title">ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h3>
+                        <div class="modal__tech-list" id="tech-list"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

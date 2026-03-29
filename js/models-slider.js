@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const viewport = document.getElementById('models-carousel');
-    const track = viewport?.querySelector('.models-track');
+    const track = viewport?.querySelector('.models__track');
     const prevBtn = document.querySelector('[data-carousel-prev]');
     const nextBtn = document.querySelector('[data-carousel-next]');
 
     if (!viewport || !track || !prevBtn || !nextBtn) return;
 
-    const slides = () => Array.from(track.querySelectorAll('.model-slide'));
+    const slides = () => Array.from(track.querySelectorAll('.models__slide'));
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     let index = 1;
@@ -58,15 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const skip = instant || reducedMotion.matches;
 
         if (skip) {
-            viewport.classList.add('wheel-skip-transition');
+            viewport.classList.add('models__viewport--skip-transition');
             updateWheelLayout();
             void viewport.offsetHeight;
-            viewport.classList.remove('wheel-skip-transition');
+            viewport.classList.remove('models__viewport--skip-transition');
         } else {
             updateWheelLayout();
         }
 
-        viewport.classList.remove('wheel-dragging');
+        viewport.classList.remove('models__viewport--dragging');
         setWheelDrag(0);
     }
 
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(delta) < DRAG_THRESHOLD) return;
 
         hasDragged = true;
-        viewport.classList.add('wheel-dragging');
+        viewport.classList.add('models__viewport--dragging');
         setWheelDrag(delta);
     });
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         isPointerDown = false;
         activePointerId = null;
-        viewport.classList.remove('wheel-dragging');
+        viewport.classList.remove('models__viewport--dragging');
 
         const delta = Math.abs(e.clientX - dragStartX);
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const hit = document.elementFromPoint(e.clientX, e.clientY);
-        const tappedSlide = hit?.closest('.model-slide');
+        const tappedSlide = hit?.closest('.models__slide');
 
         if (tappedSlide && tappedSlide.getAttribute('data-wheel-depth') === '0') {
             setTimeout(() => {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     viewport.addEventListener('pointercancel', () => {
         isPointerDown = false;
         activePointerId = null;
-        viewport.classList.remove('wheel-dragging');
+        viewport.classList.remove('models__viewport--dragging');
         setWheelDrag(0);
         goTo(index);
     });

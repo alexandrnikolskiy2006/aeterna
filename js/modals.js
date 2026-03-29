@@ -17,17 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openModal(modal) {
         if (!modal) return;
-        modal.classList.add('modal-active');
+        modal.classList.add('modal--active');
         document.body.style.overflow = 'hidden';
         modal.setAttribute('aria-hidden', 'false');
 
-        const firstInput = modal.querySelector('input');
+        const firstInput = modal.querySelector('.modal__input');
         if (firstInput) firstInput.focus();
     }
 
     function closeModal(modal) {
         if (!modal) return;
-        modal.classList.remove('modal-active');
+        modal.classList.remove('modal--active');
         modal.setAttribute('aria-hidden', 'true');
 
         setTimeout(() => {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         techList.innerHTML = '';
         car.tech.forEach(([label, value]) => {
             const div = document.createElement('div');
-            div.className = 'tech-item';
+            div.className = 'modal__tech-item';
             div.textContent = `${label} - ${value}`;
             techList.appendChild(div);
         });
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (carSwiper) carSwiper.destroy(true, true);
 
         setTimeout(() => {
-            carSwiper = new Swiper('.car-slider', {
+            carSwiper = new Swiper('.modal__car-slider', {
                 loop: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
@@ -90,13 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay') || e.target.classList.contains('modal-close')) {
+            if (e.target.classList.contains('modal__overlay') || e.target.classList.contains('modal__close')) {
                 closeModal(modal);
             }
         });
     });
 
-    document.querySelectorAll('.modal-switch').forEach(link => {
+    document.querySelectorAll('.modal__switch').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const currentModal = link.closest('.modal');
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.querySelectorAll('.otp-input').forEach((input, index, inputs) => {
+    document.querySelectorAll('.modal__otp-input').forEach((input, index, inputs) => {
         input.addEventListener('input', () => {
             input.value = input.value.replace(/[^0-9]/g, '');
             if (input.value.length === 1 && index < inputs.length - 1) {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            const activeModal = document.querySelector('.modal-active');
+            const activeModal = document.querySelector('.modal--active');
             if (activeModal) closeModal(activeModal);
         }
     });
