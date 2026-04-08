@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оставить заявку — Aeterna</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
+    <script src="js/request.js" defer></script>
+</head>
+<body>
+    <main class="request">
+        <div class="request__background"></div>
+
+        <div class="request-card">
+            <div class="request-card__content">
+                <a href="index.html" class="request-card__logo">
+                    <img src="images/favicon.svg" alt="Aeterna" loading="lazy">
+                </a>
+
+                <h1 class="request-card__title">ОСТАВИТЬ ЗАЯВКУ</h1>
+                
+                <p class="request-card__subtitle">
+                    Заполните форму — и мы свяжемся с вами в удобное время.
+                    Ваши данные используются только для обработки этого обращения
+                    и не передаются третьим лицам.<br>
+                    В Aeterna каждая заявка получает персональное внимание.
+                </p>
+
+                <form class="request-card__form" id="request-form">
+                    <input type="text" id="req-name" class="request-card__input" placeholder="Имя" required>
+                    <input type="text" id="req-surname" class="request-card__input" placeholder="Фамилия" required>
+                    <input type="tel" id="req-phone" class="request-card__input" placeholder="Телефон" required>
+                    <input type="email" id="req-email" class="request-card__input" placeholder="Электронная почта" required>
+                    
+                    <select id="type" class="request-card__select" required>
+                        <option value="" disabled selected>Тип обслуживания</option>
+                        <option value="testdrive">Тест-драйв</option>
+                        <option value="consult">Консультация</option>
+                        <option value="credit">Кредитование</option>
+                        <option value="tech">ТО</option>
+                        <option value="tradein">Trade-in</option>
+                    </select>
+
+                    <textarea id="message" class="request-card__textarea" placeholder="Ваши пожелания" rows="4"></textarea>
+
+                    <button type="submit" class="request-card__submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

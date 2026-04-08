@@ -14,6 +14,12 @@
     font-display: swap;
 }
 
+:root {
+    --white: #F1F1F1;
+    --black: #21262A;
+    --gray: #778898;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -28,8 +34,8 @@ body {
     font-family: 'Gravity', sans-serif;
     font-weight: 300;
     line-height: 1.2;
-    color: #21262A;
-    background-color: #F1F1F1;
+    color: var(--black);
+    background-color: var(--white);
     overflow-x: hidden;
 }
 
@@ -52,7 +58,7 @@ img {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    color: #F1F1F1;
+    color: var(--white);
     text-align: center;
     min-height: 100vh;
 }
@@ -72,6 +78,8 @@ img {
 .hero__user-link img {
     height: 2.25rem;
     display: block;
+    opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
 .hero__content {
@@ -109,13 +117,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #21262A;
+    color: var(--black);
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-size: 4rem;
     letter-spacing: 0;
     width: 18.75rem;
     height: 3.75rem;
-    border: 0.0625rem solid #21262A;
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
     background: transparent;
     cursor: pointer;
@@ -138,7 +146,7 @@ img {
 }
 
 .models__viewport:focus-visible {
-    outline: 2px solid #21262A;
+    outline: 2px solid var(--black);
     outline-offset: 4px;
 }
 
@@ -297,12 +305,12 @@ img {
     align-items: center;
     text-align: center;
     justify-content: center;
-    color: #21262A;
+    color: var(--black);
     font-size: 1.75rem;
     letter-spacing: 13%;
-    width: 20.625rem;
+    width: 20rem;
     height: 5rem;
-    border: 0.0625rem solid #21262A;
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
     background: transparent;
     cursor: pointer;
@@ -313,8 +321,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #F1F1F1;
-    background: #21262A;
+    color: var(--white);
+    background: var(--black);
 }
 
 .cabinet__left {
@@ -342,8 +350,8 @@ img {
 }
 
 .cabinet__left .button {
-    color: #F1F1F1;
-    border-color: #F1F1F1;
+    color: var(--white);
+    border-color: var(--white);
     transition: all 0.5s ease;
 }
 
@@ -368,8 +376,8 @@ img {
     width: 43.75rem;
     height: 5rem;
     font-size: 1.5rem;
-    color: #21262A;
-    border: 0.0625rem solid #21262A;
+    color: var(--black);
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
     margin-left: 5rem;
     transition: all 0.4s ease;
@@ -377,7 +385,7 @@ img {
 
 .dealers__map {
     margin: 5rem auto;
-    border: 0.0625rem solid #21262A;
+    border: 0.0625rem solid var(--black);
     width: 90%;
     height: 43.75rem;
     border-radius: 1.25rem;
@@ -499,7 +507,7 @@ img {
     position: relative;
     width: 100%;
     max-width: 43.75rem;
-    background: #F1F1F1;
+    background: var(--white);
     border-radius: 2.1875rem;
     box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.3);
     padding: 2.5rem 2rem;
@@ -522,7 +530,7 @@ img {
     background: transparent;
     border: none;
     font-size: 3rem;
-    color: #21262A;
+    color: var(--black);
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -542,7 +550,7 @@ img {
     font-family: 'TT Ricordi Allegria', sans-serif;
     font-weight: 300;
     font-size: 2rem;
-    color: #21262A;
+    color: var(--black);
     letter-spacing: 13%;
     line-height: 1.2;
 }
@@ -558,7 +566,7 @@ img {
     padding: 1rem 1.25rem;
     width: 80%;
     font-size: 2rem;
-    border: 0.0625rem solid #21262A;
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
     outline: none;
 }
@@ -568,9 +576,9 @@ img {
     width: 60%;
     padding: 1.125rem;
     font-size: 2rem;
-    background: #F1F1F1;
-    color: #21262A;
-    border: 0.0625rem solid #21262A;
+    background: var(--white);
+    color: var(--black);
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
@@ -596,7 +604,7 @@ img {
 
 .modal__switch,
 .modal__social {
-    color: #21262A;
+    color: var(--black);
     margin: 0 0.75rem;
     opacity: 0.5;
 }
@@ -614,9 +622,9 @@ img {
     text-align: center;
     font-size: 2rem;
     font-weight: 500;
-    border: 0.0625rem solid #21262A;
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
-    background: #F1F1F1;
+    background: var(--white);
     outline: none;
     transition: all 0.2s ease;
     appearance: textfield;
@@ -624,7 +632,7 @@ img {
 }
 
 .modal__otp-input:focus {
-    border-color: #778898;
+    border-color: var(--gray);
     transform: scale(1.03);
     box-shadow: 0 0 0 3px rgba(33, 38, 42, 0.1);
 }
@@ -666,9 +674,9 @@ img {
     width: 60%;
     padding: 1.125rem;
     font-size: 1.5rem;
-    background: #F1F1F1;
-    color: #21262A;
-    border: 0.0625rem solid #21262A;
+    background: var(--white);
+    color: var(--black);
+    border: 0.0625rem solid var(--black);
     border-radius: 0.9375rem;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
@@ -728,6 +736,260 @@ img {
     border-radius: 1.875rem;
     height: auto;
     object-fit: contain;
+}
+
+.profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem 0;
+    background: var(--white);
+    max-height: 100vh;
+}
+
+.profile__header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.profile__logo {
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.profile__logo img {
+    height: 4rem;
+}
+
+.profile__greeting {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.profile__subtitle {
+    font-size: 1.25rem;
+    color: var(--black);
+    opacity: 0.6;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+.profile__section {
+    margin-bottom: 3.5rem;
+}
+
+.profile__section-title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-bottom: 1.5rem;
+    color: var(--black);
+}
+
+.profile__data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.profile__data-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: #f8f8f8;
+    border-radius: 0.9375rem;
+    border: 0.0625rem solid var(--gray);
+    min-height: 3.5rem;
+    position: relative;
+}
+
+.profile__data-label {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.5;
+    flex-shrink: 0;
+    width: 180px;
+}
+
+.profile__data-value {
+    letter-spacing: 8%;
+    font-size: 1.25rem;
+    color: var(--black);
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+.profile__data-input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    outline: none;
+    background: white;
+}
+
+.profile__edit-btn,
+.profile__save-btn {
+    margin-left: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    background: transparent;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.profile__save-btn {
+    color: var(--black);
+}
+
+.profile__logout-btn {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--black);
+    font-size: 1.4rem;
+    letter-spacing: 13%;
+    width: 20rem;
+    height: 4rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    transition: color 0.3s ease, border-color 0.3s ease, scale 0.3s ease;
+}
+
+.request {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+}
+
+.request__background {
+    position: absolute;
+    inset: 0;
+    background: url(../images/hero-background.jpg) center/cover no-repeat;
+    filter: blur(6px);
+    z-index: 1;
+}
+
+.request-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 800px;
+    max-height: 92vh;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    overflow: scroll;
+    margin: 20px;
+}
+
+.request-card::-webkit-scrollbar {
+    display: none;
+}
+
+.request-card__content {
+    padding: 2.5rem 2.25rem;
+    max-height: 92vh;
+}
+
+.request-card__logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.request-card__logo img {
+    height: 3.4rem;
+}
+
+.request-card__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 2.15rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0;
+    margin-bottom: 1.25rem;
+    color: var(--black);
+}
+
+.request-card__subtitle {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 2.25rem;
+}
+
+.request-card__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.request-card__input,
+.request-card__select,
+.request-card__textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    background: var(--white);
+    transition: border 0.2s ease;
+    box-sizing: border-box;
+}
+
+.request-card__input:focus,
+.request-card__select:focus,
+.request-card__textarea:focus {
+    border-color: var(--black);
+}
+
+.request-card__textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.request-card__select {
+    cursor: pointer;
+}
+
+.request-card__submit-btn {
+    margin-block: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    color: var(--black);
+    font-size: 1.4rem;
+    cursor: pointer;
+    letter-spacing: 13%;
+    width: 20rem;
+    height: 4rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    transition: color 0.3s ease, border-color 0.3s ease, scale 0.3s ease;
 }
 
 @media (max-width: 1200px) {
@@ -1122,9 +1384,13 @@ img {
 }
 
 @media (hover: hover) and (pointer: fine) {
+    .hero__user-link:hover img {
+        opacity: 1;
+    }
+
     .models__top-button:hover {
-        color: #778898;
-        border-color: #778898;
+        color: var(--gray);
+        border-color: var(--gray);
     }
 
     .models__slide[data-wheel-depth="1"]:hover .models__figure {
@@ -1146,18 +1412,18 @@ img {
     }
 
     .button:hover {
-        color: #F1F1F1;
-        background: #21262A;
+        color: var(--white);
+        background: var(--black);
     }
 
     .cabinet__left .button:hover {
-        color: #21262A;
-        background: #F1F1F1;
+        color: var(--black);
+        background: var(--white);
     }
 
     .dealers__address:hover {
-        color: #778898;
-        border-color: #778898;
+        color: var(--gray);
+        border-color: var(--gray);
         transform: scale(1.03);
     }
 
@@ -1166,21 +1432,38 @@ img {
     }
 
     .modal__close:hover {
-        color: #778898;
+        color: var(--gray);
     }
 
     .modal__btn:hover {
-        background: #21262A;
-        color: #F1F1F1;
+        background: var(--black);
+        color: var(--white);
     }
 
     .modal__car-btn:hover {
-        background: #21262A;
-        color: #F1F1F1;
+        background: var(--black);
+        color: var(--white);
     }
 
     .swiper-button-prev:hover,
     .swiper-button-next:hover {
-        color: #778898;
+        color: var(--gray);
+    }
+
+    .profile__save-btn:hover,
+    .profile__edit-btn:hover {
+        background: #f0f0f0;
+    }
+
+    .profile__logout-btn:hover {
+        border-color: var(--gray);
+        color: var(--gray);
+        scale: 1.03;
+    }
+
+    .request-card__submit-btn:hover {
+        border-color: var(--gray);
+        color: var(--gray);
+        scale: 1.03;
     }
 }

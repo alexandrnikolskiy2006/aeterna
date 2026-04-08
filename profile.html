@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — Aeterna</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
+    <script src="js/profile.js" defer></script>
+</head>
+<body>
+    <main class="profile">
+        <div class="profile__header">
+            <a href="index.html" class="profile__logo">
+                <img src="images/favicon.svg" alt="Aeterna" loading="lazy">
+            </a>
+            <h1 class="profile__greeting">ЗДРАВСТВУЙТЕ, КОНСТАНТИН</h1>
+            <p class="profile__subtitle">
+                Добро пожаловать в профиль. Здесь вы можете просматривать и редактировать свои данные.
+            </p>
+        </div>
+
+        <section class="profile__section">
+            <h2 class="profile__section-title">ЛИЧНЫЕ ДАННЫЕ</h2>
+
+            <div class="profile__data-list">
+
+                <div class="profile__data-row" data-field="name">
+                    <span class="profile__data-label">Имя и фамилия</span>
+                    <span class="profile__data-value" id="value-name">Константин Чеканов</span>
+                    <input type="text" class="profile__data-input" id="input-name" value="Константин Чеканов">
+                    
+                    <button class="profile__edit-btn" title="Редактировать">✎</button>
+                    <button class="profile__save-btn" title="Сохранить" style="display: none;">✔</button>
+                </div>
+
+                <div class="profile__data-row" data-field="phone">
+                    <span class="profile__data-label">Номер телефона</span>
+                    <span class="profile__data-value" id="value-phone">+7 953 473-08-31</span>
+                    <input type="tel" class="profile__data-input" id="input-phone" value="+7 953 473-08-31">
+                    
+                    <button class="profile__edit-btn" title="Редактировать">✎</button>
+                    <button class="profile__save-btn" title="Сохранить" style="display: none;">✔</button>
+                </div>
+
+                <div class="profile__data-row" data-field="email">
+                    <span class="profile__data-label">Электронная почта</span>
+                    <span class="profile__data-value" id="value-email">kost-chekanov@mail.ru</span>
+                    <input type="email" class="profile__data-input" id="input-email" value="kost-chekanov@mail.ru">
+                    
+                    <button class="profile__edit-btn" title="Редактировать">✎</button>
+                    <button class="profile__save-btn" title="Сохранить" style="display: none;">✔</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="profile__section">
+            <h2 class="profile__section-title">ДАННЫЕ УЧЁТНОЙ ЗАПИСИ</h2>
+            
+            <div class="profile__data-row">
+                <span class="profile__data-label">Пароль</span>
+                <span class="profile__data-value">••••••••••••</span>
+                <button class="profile__edit-btn" title="Изменить пароль">✎</button>
+            </div>
+
+            <a href="index.html" class="profile__logout-btn">Выйти из аккаунта</a>
+        </section>
+    </main>
+</body>
+</html>
