@@ -1,0 +1,1469 @@
+@font-face {
+    font-family: 'Gravity';
+    src: url(../fonts/Gravity.woff2) format(woff2);
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Ricordi Allegria';
+    src: url(../fonts/TT-Ricordi-Allegria.woff2) format(woff2);
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --white: #F1F1F1;
+    --black: #21262A;
+    --gray: #778898;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Gravity', sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--black);
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+main {
+    letter-spacing: 13%;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    user-select: none;
+}
+
+.hero {
+    background: url(../images/hero-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: var(--white);
+    text-align: center;
+    min-height: 100vh;
+}
+
+.hero__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.3125rem 2.9375rem;
+}
+
+.hero__logo img {
+    height: 3.9375rem;
+    display: block;
+}
+
+.hero__user-link img {
+    height: 2.25rem;
+    display: block;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.hero__content {
+    padding-top: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 0;
+    line-height: 1;
+    font-weight: 300;
+    padding-inline: 0.625rem;
+}
+
+.models__top {
+    padding-top: 7rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.models__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 3.25rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.models__top-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 0;
+    width: 18.75rem;
+    height: 3.75rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.models__viewport {
+    --carousel-move-duration: 0.55s;
+    --carousel-move-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --carousel-active-inner-nudge: 0px;
+    --wheel-slot: clamp(23.75rem, 50vw, 40rem);
+    --wheel-drag: 0px;
+
+    padding-bottom: 11.25rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    outline: none;
+    touch-action: none;
+}
+
+.models__viewport:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 4px;
+}
+
+.models__viewport--dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.models__viewport--dragging .models__slide,
+.models__viewport--skip-transition .models__slide,
+.models__viewport--dragging .models__figure,
+.models__viewport--skip-transition .models__figure,
+.models__viewport--dragging .models__caption,
+.models__viewport--skip-transition .models__caption {
+    transition: none;
+}
+
+.models__track {
+    position: relative;
+    width: 100%;
+    min-height: clamp(27.5rem, 45vh, 45rem);
+    margin: 0 auto;
+}
+
+.models__slide {
+    --wheel-x: 0;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: clamp(18.75rem, 36vw, 30rem);
+    will-change: transform;
+    transition: transform var(--carousel-move-duration) var(--carousel-move-ease);
+    transform: translateX(-50%) translateX(calc(var(--wheel-x, 0) * var(--wheel-slot) + var(--wheel-drag, 0px)));
+}
+
+.models__slide-link {
+    display: block;
+    color: inherit;
+}
+
+.models__slide[data-wheel-depth="2"] .models__slide-link,
+.models__slide[data-wheel-depth="3"] .models__slide-link {
+    pointer-events: none;
+}
+
+.models__figure {
+    margin: 0;
+    text-align: center;
+    transform-origin: 50% 100%;
+    backface-visibility: hidden;
+    transition:
+        transform var(--carousel-move-duration) var(--carousel-move-ease),
+        opacity var(--carousel-move-duration) ease,
+        filter var(--carousel-move-duration) ease;
+}
+
+.models__image {
+    width: 100%;
+    display: block;
+}
+
+.models__caption {
+    margin-top: 1.25rem;
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    min-height: 2.5em;
+    box-sizing: border-box;
+    transition:
+        opacity var(--carousel-move-duration) ease,
+        margin-top var(--carousel-move-duration) ease,
+        visibility var(--carousel-move-duration);
+}
+
+.models__slide[data-wheel-depth="0"] .models__figure {
+    transform: translateX(var(--carousel-active-inner-nudge)) scale(1.65) translateY(3.25rem);
+    opacity: 1;
+    filter: none;
+}
+
+.models__slide[data-wheel-depth="1"] .models__figure {
+    transform: scale(0.9) translateY(-2.5rem);
+    opacity: 0.92;
+    filter: brightness(0.96);
+}
+
+.models__slide[data-wheel-depth="2"] .models__figure {
+    transform: scale(0.76) translateY(-3.25rem);
+    opacity: 0.62;
+    filter: brightness(0.88);
+}
+
+.models__slide[data-wheel-depth="3"] .models__figure {
+    transform: scale(0.64) translateY(-3.625rem);
+    opacity: 0.45;
+    filter: brightness(0.82);
+}
+
+.models__slide:not([data-wheel-depth="0"]) .models__caption {
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.models__slide[data-wheel-depth="0"] .models__caption {
+    opacity: 1;
+    visibility: visible;
+}
+
+.benefits__text {
+    margin: 0 auto;
+}
+
+.benefits__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.benefits__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.benefits__description {
+    margin-top: 0.625rem;
+    font-size: 1.5rem;
+}
+
+.benefits__image {
+    width: 50%;
+}
+
+.benefits__buttons-top {
+    padding-top: 6.25rem;
+    padding-bottom: 3.75rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.benefits__buttons-bottom {
+    padding-bottom: 6.25rem;
+    gap: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--black);
+    font-size: 1.75rem;
+    letter-spacing: 13%;
+    width: 20rem;
+    height: 5rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cabinet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    background: var(--black);
+}
+
+.cabinet__left {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+.cabinet__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+}
+
+.cabinet__description {
+    font-size: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.cabinet__left .button {
+    color: var(--white);
+    border-color: var(--white);
+    transition: all 0.5s ease;
+}
+
+.cabinet__image {
+    width: 55%;
+}
+
+.dealers__title {
+    margin: 3.75rem 0 2.5rem;
+    padding-left: 5rem;
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.dealers__address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43.75rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    color: var(--black);
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    margin-left: 5rem;
+    transition: all 0.4s ease;
+}
+
+.dealers__map {
+    margin: 5rem auto;
+    border: 0.0625rem solid var(--black);
+    width: 90%;
+    height: 43.75rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+.dealers__map > div {
+    height: 100%;
+}
+
+.dealers__map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3.75rem;
+}
+
+.footer__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 40%;
+    padding-left: 6.25rem;
+}
+
+.footer__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375rem;
+    margin-bottom: 1.875rem;
+}
+
+.footer__phones {
+    font-size: 2rem;
+}
+
+.footer__service {
+    font-size: 1.75rem;
+}
+
+.footer__social {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1.5625rem;
+}
+
+.footer__social-link img {
+    width: 3.5625rem;
+    transition: transform 0.3s ease;
+}
+
+.footer__legal h3 {
+    font-size: 1rem;
+    margin-bottom: 1.875rem;
+}
+
+.footer__legal-text {
+    font-size: 1.25rem;
+    opacity: 0.5;
+}
+
+.footer__developers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.footer__developers-text {
+    font-style: italic;
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+.footer__developers img {
+    max-width: 70%;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0s linear 0.4s;
+}
+
+.modal--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, visibility 0s;
+}
+
+.modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal--active .modal__overlay {
+    opacity: 1;
+}
+
+.modal__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 43.75rem;
+    background: var(--white);
+    border-radius: 2.1875rem;
+    box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.3);
+    padding: 2.5rem 2rem;
+    opacity: 0;
+    transform: scaleY(0) translateY(-2.5rem);
+    transform-origin: top;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.modal--active .modal__dialog {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+}
+
+.modal__close {
+    position: absolute;
+    top: 0.9375rem;
+    right: 2.1875rem;
+    width: 2rem;
+    background: transparent;
+    border: none;
+    font-size: 3rem;
+    color: var(--black);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.modal__icon {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 1rem;
+}
+
+.modal__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--black);
+    letter-spacing: 13%;
+    line-height: 1.2;
+}
+
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.modal__input {
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    width: 80%;
+    font-size: 2rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    outline: none;
+}
+
+.modal__btn {
+    margin: 0 auto;
+    width: 60%;
+    padding: 1.125rem;
+    font-size: 2rem;
+    background: var(--white);
+    color: var(--black);
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.modal__footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    gap: 1.5rem;
+}
+
+.modal__footer a {
+    text-decoration: none;
+    pointer-events: none;
+}
+
+.modal__pointer {
+    pointer-events: all;
+}
+
+.modal__switch,
+.modal__social {
+    color: var(--black);
+    margin: 0 0.75rem;
+    opacity: 0.5;
+}
+
+.modal__otp-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.modal__otp-input {
+    width: 3.75rem;
+    height: 3.75rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    background: var(--white);
+    outline: none;
+    transition: all 0.2s ease;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.modal__otp-input:focus {
+    border-color: var(--gray);
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px rgba(33, 38, 42, 0.1);
+}
+
+.modal__otp-input::-webkit-inner-spin-button,
+.modal__otp-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.modal--car .modal__dialog {
+    max-width: 75rem;
+    padding: 2.5rem 3.125rem;
+}
+
+.modal__car-inner {
+    display: grid;
+    grid-template-columns: 9fr 11fr;
+    gap: 3.75rem;
+}
+
+.modal__car-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.modal__car-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-bottom: 0.625rem;
+}
+
+.modal__car-btn {
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
+    padding: 1.125rem;
+    font-size: 1.5rem;
+    background: var(--white);
+    color: var(--black);
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.modal__car-right {
+    min-width: 0;
+}
+
+.modal__car-title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-weight: 300;
+    font-size: 3.5rem;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.modal__car-spec {
+    font-size: 1.5rem;
+    letter-spacing: 13%;
+    opacity: 0.5;
+    margin-bottom: 1.875rem;
+}
+
+.modal__car-description {
+    font-size: 1.125rem;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.modal__car-price {
+    margin: 2.5rem auto;
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.modal__car-tech h3 {
+    font-size: 1.25rem;
+    color: #000000;
+    margin-bottom: 1.25rem;
+}
+
+.modal__tech-item {
+    font-size: 1.125rem;
+    opacity: 0.5;
+}
+
+.modal__car-slider {
+    width: 100%;
+    height: auto;
+}
+
+.modal__car-slider img {
+    width: 100%;
+    border-radius: 1.875rem;
+    height: auto;
+    object-fit: contain;
+}
+
+.profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem 0;
+    background: var(--white);
+    max-height: 100vh;
+}
+
+.profile__header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.profile__logo {
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.profile__logo img {
+    height: 4rem;
+}
+
+.profile__greeting {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.profile__subtitle {
+    font-size: 1.25rem;
+    color: var(--black);
+    opacity: 0.6;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+.profile__section {
+    margin-bottom: 3.5rem;
+}
+
+.profile__section-title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-bottom: 1.5rem;
+    color: var(--black);
+}
+
+.profile__data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.profile__data-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: #f8f8f8;
+    border-radius: 0.9375rem;
+    border: 0.0625rem solid var(--gray);
+    min-height: 3.5rem;
+    position: relative;
+}
+
+.profile__data-label {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.5;
+    flex-shrink: 0;
+    width: 180px;
+}
+
+.profile__data-value {
+    letter-spacing: 8%;
+    font-size: 1.25rem;
+    color: var(--black);
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+.profile__data-input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    outline: none;
+    background: white;
+}
+
+.profile__edit-btn,
+.profile__save-btn {
+    margin-left: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    background: transparent;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.profile__save-btn {
+    color: var(--black);
+}
+
+.profile__logout-btn {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--black);
+    font-size: 1.4rem;
+    letter-spacing: 13%;
+    width: 20rem;
+    height: 4rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    transition: color 0.3s ease, border-color 0.3s ease, scale 0.3s ease;
+}
+
+.request {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+}
+
+.request__background {
+    position: absolute;
+    inset: 0;
+    background: url(../images/hero-background.jpg) center/cover no-repeat;
+    filter: blur(6px);
+    z-index: 1;
+}
+
+.request-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 800px;
+    max-height: 92vh;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    overflow: scroll;
+    margin: 20px;
+}
+
+.request-card::-webkit-scrollbar {
+    display: none;
+}
+
+.request-card__content {
+    padding: 2.5rem 2.25rem;
+    max-height: 92vh;
+}
+
+.request-card__logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.request-card__logo img {
+    height: 3.4rem;
+}
+
+.request-card__title {
+    font-family: 'TT Ricordi Allegria', sans-serif;
+    font-size: 2.15rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0;
+    margin-bottom: 1.25rem;
+    color: var(--black);
+}
+
+.request-card__subtitle {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 2.25rem;
+}
+
+.request-card__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.request-card__input,
+.request-card__select,
+.request-card__textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    background: var(--white);
+    transition: border 0.2s ease;
+    box-sizing: border-box;
+}
+
+.request-card__input:focus,
+.request-card__select:focus,
+.request-card__textarea:focus {
+    border-color: var(--black);
+}
+
+.request-card__textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.request-card__select {
+    cursor: pointer;
+}
+
+.request-card__submit-btn {
+    margin-block: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    color: var(--black);
+    font-size: 1.4rem;
+    cursor: pointer;
+    letter-spacing: 13%;
+    width: 20rem;
+    height: 4rem;
+    border: 0.0625rem solid var(--black);
+    border-radius: 0.9375rem;
+    transition: color 0.3s ease, border-color 0.3s ease, scale 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 12px;
+    }
+    
+    .benefits__top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .benefits__text {
+        max-width: 100%;
+    }
+
+    .benefits__title {
+        text-align: center;
+    }
+
+    .benefits__image {
+        width: 100%;
+        max-width: 36rem;
+        margin: 0 auto;
+    }
+
+    .benefits__buttons-top,
+    .benefits__buttons-bottom {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .benefits__buttons-bottom {
+        gap: 1.25rem 2rem;
+    }
+
+    .cabinet {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cabinet__left {
+        padding: 3rem 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cabinet__description {
+        margin-bottom: 2.5rem;
+    }
+
+    .cabinet__image {
+        display: none;
+    }
+
+    .dealers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dealers__title {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .dealers__address {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        width: calc(100% - 3rem);
+        max-width: 43.75rem;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 992px) {
+    .models__top {
+        padding-top: 5rem;
+    }
+
+    .models__top-button {
+        display: none;
+        font-size: clamp(2rem, 6vw, 4rem);
+        width: min(18.75rem, 88vw);
+    }
+
+    .models__viewport {
+        --wheel-slot: clamp(14rem, 52vw, 28rem);
+        padding-bottom: 6rem;
+    }
+
+    .models__track {
+        min-height: clamp(20rem, 33vh, 32rem);
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .footer__left {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .modal__dialog {
+        max-width: min(43.75rem, calc(100vw - 2rem));
+        margin: 0 1rem;
+    }
+
+    .modal--car .modal__dialog {
+        max-width: min(75rem, calc(100vw - 2rem));
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__top {
+        padding: 1.25rem 1rem;
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .hero__logo img {
+        height: 3rem;
+    }
+
+    .hero__user-link img {
+        height: 1.875rem;
+    }
+
+    .models__caption {
+        font-size: 1.125rem;
+    }
+
+    .models__track {
+        min-height: clamp(17rem, 28vh, 26rem);
+    }
+
+    .benefits__buttons-top {
+        padding-bottom: 1rem;
+    }
+
+    .dealers {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        box-sizing: border-box;
+    }
+
+    .dealers__title {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .dealers__address {
+        font-size: 1.25rem;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dealers__map {
+        width: calc(100% - 2.5rem);
+        height: min(50vh, 24rem);
+        min-height: 260px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .dealers__map > div {
+        height: 100%;
+    }
+
+    .dealers__map iframe {
+        height: 100% !important;
+        min-height: 260px;
+    }
+
+    .footer__left {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .footer {
+        display: block;
+    }
+
+    .footer__developers img {
+        padding-top: 2rem;
+    }
+
+    .modal__dialog {
+        padding: 2rem 1.25rem;
+    }
+
+    .modal__input {
+        font-size: 1.5rem;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .modal__btn {
+        font-size: 1.125rem;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .modal__car-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .modal--car .modal__dialog {
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+
+    .modal__car-left {
+        order: -1;
+    }
+
+    .modal__car-buttons {
+        padding-top: 1.25rem;
+    }
+
+    .modal__car-btn {
+        width: 100%;
+        max-width: 20rem;
+    }
+
+    .modal__car-title {
+        font-size: clamp(1.75rem, 6vw, 3.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .models__top {
+        display: flex;
+        padding-top: 3.5rem;
+        gap: 1rem;
+    }
+
+    .models__title {
+        font-size: 2.5rem;
+        padding-inline: 1rem;
+    }
+
+    .models__top-button {
+        width: min(100%, 16rem);
+        height: 3.25rem;
+        font-size: 2rem;
+    }
+
+    .models__viewport {
+        --wheel-slot: clamp(11rem, 72vw, 18rem);
+        padding-bottom: 4rem;
+    }
+
+    .models__track {
+        min-height: clamp(17rem, 22vh, 26rem);
+    }
+
+    .models__slide {
+        width: clamp(12rem, 78vw, 22rem);
+    }
+
+    .models__slide[data-wheel-depth="0"] .models__figure {
+        transform: translateX(var(--carousel-active-inner-nudge)) scale(1.28) translateY(1.75rem);
+    }
+
+    .models__caption {
+        font-size: 1.125rem;
+        min-height: 2.25em;
+    }
+
+    .benefits__title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .benefits__description {
+        font-size: 1.25rem;
+    }
+
+    .benefits__buttons-top {
+        padding-top: 3rem;
+        padding-bottom: 1rem;
+    }
+
+    .benefits__buttons-bottom {
+        padding-bottom: 3rem;
+    }
+
+    .button {
+        font-size: 1.5rem;
+        width: 100%;
+        max-width: 22rem;
+        height: auto;
+        min-height: 3.25rem;
+        padding: 0.75rem 1rem;
+        box-sizing: border-box;
+    }
+
+    .dealers__title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .dealers__address {
+        display: none;
+    }
+
+    .dealers__map {
+        width: calc(100% - 1.5rem);
+        height: min(45vh, 20rem);
+        min-height: 220px;
+    }
+
+    .dealers__map iframe {
+        min-height: 220px;
+    }
+
+    .footer {
+        display: block;
+    }
+
+    .footer__developers {
+        padding-top: 2rem;
+    }
+
+    .footer__developers-text {
+        font-size: 1.5rem;
+    }
+
+    .modal__close {
+        right: 1rem;
+        font-size: 2.5rem;
+    }
+
+    .modal__header {
+        margin-bottom: 2rem;
+    }
+
+    .modal__otp-container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .modal__otp-input {
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 1.25rem;
+    }
+
+    .modal--car .modal__dialog {
+        padding: 1.5rem 1rem;
+    }
+
+    .modal__car-buttons {
+        padding-top: 1rem;
+    }
+
+    .modal__car-btn {
+        max-width: 70%;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        transform: scale(0.85);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .hero__user-link:hover img {
+        opacity: 1;
+    }
+
+    .models__top-button:hover {
+        color: var(--gray);
+        border-color: var(--gray);
+    }
+
+    .models__slide[data-wheel-depth="1"]:hover .models__figure {
+        transform: scale(0.95) translateY(-2.75rem);
+        opacity: 0.96;
+        filter: brightness(1);
+    }
+
+    .models__slide[data-wheel-depth="1"]:hover .models__caption {
+        opacity: 1;
+        visibility: visible;
+        font-size: 1.75rem;
+        margin-top: 1.25rem;
+    }
+
+    .models__slide[data-wheel-depth="0"]:hover .models__figure {
+        transform: translateX(var(--carousel-active-inner-nudge)) scale(1.75) translateY(3.25rem);
+        opacity: 0.95;
+    }
+
+    .button:hover {
+        color: var(--white);
+        background: var(--black);
+    }
+
+    .cabinet__left .button:hover {
+        color: var(--black);
+        background: var(--white);
+    }
+
+    .dealers__address:hover {
+        color: var(--gray);
+        border-color: var(--gray);
+        transform: scale(1.03);
+    }
+
+    .footer__social-link:hover img {
+        transform: scale(1.1);
+    }
+
+    .modal__close:hover {
+        color: var(--gray);
+    }
+
+    .modal__btn:hover {
+        background: var(--black);
+        color: var(--white);
+    }
+
+    .modal__car-btn:hover {
+        background: var(--black);
+        color: var(--white);
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        color: var(--gray);
+    }
+
+    .profile__save-btn:hover,
+    .profile__edit-btn:hover {
+        background: #f0f0f0;
+    }
+
+    .profile__logout-btn:hover {
+        border-color: var(--gray);
+        color: var(--gray);
+        scale: 1.03;
+    }
+
+    .request-card__submit-btn:hover {
+        border-color: var(--gray);
+        color: var(--gray);
+        scale: 1.03;
+    }
+}

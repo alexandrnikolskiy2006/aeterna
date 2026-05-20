@@ -1,27 +1,53 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aeterna</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="js/models-slider.js" defer></script>
-    <script src="js/modals.js" defer></script>
-    <script src="js/cars.js" defer></script>
+    <title>Aeterna — Автомобили премиум-класса</title>
+    
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon">
+    
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" integrity="sha384-..." crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+    <!-- Наши скрипты -->
+    <script src="{% static 'js/models-slider.js' %}" defer></script>
+    <script src="{% static 'js/modals.js' %}" defer></script>
+    <script src="{% static 'js/cars.js' %}" defer></script>
+    <script src="{% static 'js/auth.js' %}" defer></script>
+    {% if TELEGRAM_BOT_USERNAME %}
+    <script async src="https://telegram.org/js/telegram-widget.js?22"
+            data-telegram-login="{{ TELEGRAM_BOT_USERNAME }}"
+            data-size="medium"
+            data-onauth="onTelegramAuth(user)"
+            data-request-access="write"
+            id="telegram-widget-script"
+            style="display:none">
+    </script>
+    {% endif %}
 </head>
 <body>
     <main>
         <section class="hero">
             <div class="hero__top">
-                <a href="#" class="hero__logo">
-                    <img src="images/favicon.svg" alt="Aeterna" loading="lazy">
+                <a href="/" class="hero__logo">
+                    <img src="{% static 'images/favicon.svg' %}" alt="Aeterna" loading="lazy">
                 </a>
-                <a href="profile.html" class="hero__user-link" data-modal="auth">
-                    <img src="images/user.svg" alt="Личный кабинет" loading="lazy">
+                {% if user.is_authenticated %}
+                <a href="/profile/" class="hero__user-link" title="{{ user.display_name }}">
+                    <img src="{% static 'images/user.svg' %}" alt="Личный кабинет" loading="lazy">
                 </a>
+                {% else %}
+                <a href="#" class="hero__user-link" data-modal="auth">
+                    <img src="{% static 'images/user.svg' %}" alt="Личный кабинет" loading="lazy">
+                </a>
+                {% endif %}
             </div>
             <div class="hero__content">
                 <h1 class="hero__title">ГДЕ СЛОЖНЫЕ ТЕХНОЛОГИИ ОЗНАЧАЮТ ПРОСТУЮ НАДЕЖНОСТЬ</h1>
@@ -36,30 +62,19 @@
             </div>
             <div class="models__viewport" id="models-carousel">
                 <div class="models__track">
-                    <div class="models__slide" data-model="celeste">
+                    {% for car in cars %}
+                    <div class="models__slide" data-model="{{ car.model_name|lower }}">
                         <a href="#" class="models__slide-link" data-modal="car">
                             <figure class="models__figure">
-                                <img src="images/celeste.png" alt="Aeterna Celeste" class="models__image" loading="lazy">
-                                <figcaption class="models__caption">Aeterna Celeste</figcaption>
+                                <!-- Выводим главную картинку (main_image.url) -->
+                                <img src="{% if car.main_image %}{{ car.main_image.url }}{% else %}{% static 'images/default_car.png' %}{% endif %}" alt="{{ car.title }}" class="models__image" loading="lazy">
+                                <figcaption class="models__caption">{{ car.title }}</figcaption>
                             </figure>
                         </a>
                     </div>
-                    <div class="models__slide" data-model="incrocio">
-                        <a href="#" class="models__slide-link" data-modal="car">
-                            <figure class="models__figure">
-                                <img src="images/incrocio.png" alt="Aeterna Incrocio" class="models__image" loading="lazy">
-                                <figcaption class="models__caption">Aeterna Incrocio</figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="models__slide" data-model="berlina">
-                        <a href="#" class="models__slide-link" data-modal="car">
-                            <figure class="models__figure">
-                                <img src="images/berlina.png" alt="Aeterna Berlina" class="models__image" loading="lazy">
-                                <figcaption class="models__caption">Aeterna Berlina</figcaption>
-                            </figure>
-                        </a>
-                    </div>
+                    {% empty %}
+                    <div style="text-align: center; padding: 50px; color: white;">Автомобили скоро появятся</div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -70,31 +85,35 @@
                     <h2 class="benefits__title">ПРИОБРЕТАЙТЕ<br>С ВЫГОДОЙ</h2>
                     <p class="benefits__description">Быстрый поиск, сравнение, выбор<br>и предзаказ автомобилей Aeterna</p>
                 </div>
-                <img src="images/rode1.jpg" alt="Aeterna Berlina на фоне заката" class="benefits__image" loading="lazy">
+                <img src="{% static 'images/rode1.jpg' %}" alt="Aeterna Berlina" class="benefits__image" loading="lazy">
             </div>
             <div class="benefits__buttons-top">
-                <a href="/request.html" class="button">ТЕСТ-ДРАЙВ</a>
-                <a href="/request.html" class="button">КРЕДИТОВАНИЕ</a>
+                <a href="/request/" class="button">ТЕСТ-ДРАЙВ</a>
+                <a href="/request/" class="button">КРЕДИТОВАНИЕ</a>
                 <a href="#models-section" class="button">АВТОМОБИЛИ В НАЛИЧИИ</a>
             </div>
             <div class="benefits__buttons-bottom">
-                <a href="/request.html" class="button">ЗАПИСЬ НА ТО</a>
-                <a href="/request.html" class="button">СТРАХОВАНИЕ</a>
+                <a href="/request/" class="button">ЗАПИСЬ НА ТО</a>
+                <a href="/request/" class="button">СТРАХОВАНИЕ</a>
             </div>
         </section>
-
         <section class="cabinet">
             <div class="cabinet__left">
                 <h2 class="cabinet__title">ЛИЧНЫЙ КАБИНЕТ<br>ВЛАДЕЛЬЦА</h2>
                 <p class="cabinet__description">Личный кабинет для владельца<br>
                     автомобиля предоставляет<br>
-                    эксклюзивный доступ к различной<br>
-                    информации и функционалу,<br>
-                    который улучшает общий опыт<br>
-                    владения автомобилем.</p>
-                <a href="profile.html" class="button">ПЕРЕЙТИ</a> <!-- data-modal="auth" -->
+                    эксклюзивный доступ...</p>
+                
+                {% if user.is_authenticated %}
+                    <!-- Если пользователь вошел в аккаунт -->
+                    <a href="{% url 'profile' %}" class="button">ПЕРЕЙТИ</a>
+                {% else %}
+                    <!-- Если пользователь НЕ вошел (открываем модальное окно) -->
+                    <a href="#" class="button" data-modal="auth">ПЕРЕЙТИ</a>
+                {% endif %}
+                
             </div>
-            <img src="images/rode2.jpg" alt="Aeterna Berlina на фоне заката" class="cabinet__image" loading="lazy">
+            <img src="{% static 'images/rode2.jpg' %}" alt="Aeterna Berlina" class="cabinet__image" loading="lazy">
         </section>
 
         <section class="dealers">
@@ -103,21 +122,8 @@
                 пгт. Нарышкино, 1-Ленинский переулок, 10
             </a>
             <div class="dealers__map">
-                <div style="position:relative;overflow:hidden;">
-                    <a href="https://yandex.com/maps/10772/oryol-oblast/?utm_medium=mapframe&utm_source=maps" 
-                    style="color:#eee;font-size:12px;position:absolute;top:0px;">Орловская область</a>
-                    <a href="https://yandex.com/maps/10772/oryol-oblast/house/1_y_leninskiy_pereulok_10/Z0wYcQNhQUIFQFtofXV3cnxlZA==/?ll=35.741260%2C52.963053&utm_medium=mapframe&utm_source=maps&z=17" 
-                    style="color:#eee;font-size:12px;position:absolute;top:14px;">1-й Ленинский переулок, 10 — Яндекс Карты</a>
-                    
-                    <iframe 
-                        src="https://yandex.com/map-widget/v1/?ll=35.741260%2C52.963053&mode=whatshere&utm_source=share&whatshere%5Bpoint%5D=35.741872%2C52.963060&whatshere%5Bzoom%5D=17&z=17" 
-                        width="100%" 
-                        height="100%" 
-                        frameborder="0" 
-                        allowfullscreen="true" 
-                        style="position:relative;">
-                    </iframe>
-                </div>
+                <iframe src="https://yandex.com/map-widget/v1/?ll=35.741260%2C52.963053&mode=whatshere..." 
+                        width="100%" height="400" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
             </div>
         </section>
     </main>
@@ -133,48 +139,55 @@
                 </p>
             </div>
             <div class="footer__social">
-                <a href="https://vk.com/kostranzes" class="footer__social-link" target="_blank" rel="noopener noreferrer">
-                    <img src="images/vk.svg" alt="Мы во ВКонтакте" loading="lazy">
+                <a href="https://vk.com/kostranzes" target="_blank">
+                    <img src="{% static 'images/vk.svg' %}" alt="VK" loading="lazy">
                 </a>
-                <a href="https://t.me/ne_r0mAAshka" class="footer__social-link" target="_blank" rel="noopener noreferrer">
-                    <img src="images/telegram.svg" alt="Мы в Telegram" loading="lazy">
+                <a href="https://t.me/ne_r0mAAshka" target="_blank">
+                    <img src="{% static 'images/telegram.svg' %}" alt="Telegram" loading="lazy">
                 </a>
             </div>
-            <div class="footer__legal">
-                <h3 class="footer__copyright">&copy; 2026 АО «AETERNA»</h3>
-                <p class="footer__legal-text">
-                    ПРАВОВАЯ ИНФОРМАЦИЯ<br>
-                    *- Рекомендованные розничные цены указаны с учётом максимальной 
-                    выгоды по действующим акциям.<br><br>
-                    Информация о технических характеристиках, составе комплектаций, 
-                    цветовой гамме и рекомендованных розничных ценах, 
-                    опубликованных на официальном сайте АО «AETERNA», носит 
-                    справочный характер и ни при каких обстоятельствах не является 
-                    публичной офертой, определяемой положениями Статьи 437 ч.2 
-                    Гражданского кодекса Российской Федерации. Для получения 
-                    подробной информации обращайтесь к официальным дилерам 
-                    АО «AETERNA».<br>
-                    Политика АО «AETERNA» в отношении персональных данных.
-                </p>
-            </div>
+        </div>
+
+        <div class="footer__legal">
+            <h3 class="footer__copyright">&copy; 2026 АО «AETERNA»</h3>
+            <p class="footer__legal-text">
+                ПРАВОВАЯ ИНФОРМАЦИЯ<br>
+                *- Рекомендованные розничные цены указаны с учётом максимальной 
+                выгоды по действующим акциям.<br><br>
+                Информация о технических характеристиках, составе комплектаций, 
+                цветовой гамме и рекомендованных розничных ценах, 
+                опубликованных на официальном сайте АО «AETERNA», носит 
+                справочный характер и ни при каких обстоятельствах не является 
+                публичной офертой, определяемой положениями Статьи 437 ч.2 
+                Гражданского кодекса Российской Федерации. Для получения 
+                подробной информации обращайтесь к официальным дилерам 
+                АО «AETERNA».<br>
+                Политика АО «AETERNA» в отношении персональных данных.
+            </p>
         </div>
         <div class="footer__developers">
-            <img src="images/successful-success.jpg" alt="Величайшие разрабы данного шедевра" loading="lazy">
-            <p class="footer__developers-text">41ПГ Никольский А.Ю. Чеканов К.С.</p>
+            <img src="{% static 'images/successful-success.jpg' %}" alt="Разработчики" loading="lazy">
+            <p>41ПГ Никольский А.Ю. Чеканов К.С.</p>
         </div>
     </footer>
-
-    <div class="modal" id="auth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+<div class="modal" id="auth-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="auth-title">
         <div class="modal__overlay"></div>
         <div class="modal__dialog">
             <button class="modal__close" aria-label="Закрыть">×</button>
             <div class="modal__header">
-                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <img src="{% static 'images/favicon.svg' %}" alt="" class="modal__icon" loading="lazy">
                 <h2 class="modal__title" id="auth-title">АВТОРИЗАЦИЯ</h2>
             </div>
-            <form class="modal__form">
-                <input type="text" id="auth-login" class="modal__input" placeholder="Телефон/email" required>
-                <input type="password" id="auth-password" class="modal__input" placeholder="Пароль" required>
+           <form class="modal__form" id="auth-form" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                
+                <!-- Добавлен контейнер auth-error (вместо reg-error, который был тут по ошибке) -->
+                <div id="auth-error" style="color: red; margin-bottom: 10px; font-size: 14px; text-align: center; display: none;"></div>
+                
+                <!-- ДОБАВЛЕНЫ атрибуты name="username" и name="password" -->
+                <input type="text" name="username" id="auth-login" class="modal__input" placeholder="Email" required autocomplete="email">
+                <input type="password" name="password" id="auth-password" class="modal__input" placeholder="Пароль" required autocomplete="current-password">
+                
                 <button type="submit" class="modal__btn">Войти</button>
             </form>
             <div class="modal__footer">
@@ -184,9 +197,12 @@
                 <a href="#forgot-modal" class="modal__switch">
                     <span class="modal__pointer">Забыли пароль?</span>
                 </a>
-                <a href="#" class="modal__social">
+                {% if TELEGRAM_BOT_USERNAME %}
+                <button type="button" class="modal__social modal__social--tg" id="tg-login-btn">
+                    <img src="{% static 'images/telegram.svg' %}" alt="Telegram" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">
                     <span class="modal__pointer">Войти через Telegram</span>
-                </a>
+                </button>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -196,24 +212,33 @@
         <div class="modal__dialog">
             <button class="modal__close" aria-label="Закрыть">×</button>
             <div class="modal__header">
-                <img src="images/favicon.svg" alt="" class="modal__icon" loading="lazy">
+                <img src="{% static 'images/favicon.svg' %}" alt="" class="modal__icon" loading="lazy">
                 <h2 class="modal__title" id="reg-title">РЕГИСТРАЦИЯ</h2>
             </div>
-            <form class="modal__form">
-                <input type="text" id="reg-name" class="modal__input" placeholder="Имя" required>
-                <input type="text" id="reg-surname" class="modal__input" placeholder="Фамилия" required>
-                <input type="tel" id="reg-phone" class="modal__input" placeholder="Телефон" required>
-                <input type="email" id="reg-email" class="modal__input" placeholder="Email" required>
-                <input type="password" id="reg-password" class="modal__input" placeholder="Пароль" required>
+            <form class="modal__form" id="reg-form" method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div id="reg-error" style="color: red; margin-bottom: 10px; font-size: 14px; text-align: center; display: none;"></div>
+                
+                <!-- Поля username тут нет! -->
+                <input type="text" name="first_name" id="reg-name" class="modal__input" placeholder="Имя" required>
+                <input type="text" name="last_name" id="reg-surname" class="modal__input" placeholder="Фамилия" required>
+                <input type="email" name="email" id="reg-email" class="modal__input" placeholder="Email" required autocomplete="email">
+                <input type="tel" name="phone" id="reg-phone" class="modal__input" placeholder="Телефон" required autocomplete="tel">
+                <input type="password" name="password1" id="reg-password" class="modal__input" placeholder="Пароль" required autocomplete="new-password">
+                <input type="password" name="password2" id="reg-password-confirm" class="modal__input" placeholder="Повторите пароль" required autocomplete="new-password">
+                
                 <button type="submit" class="modal__btn">Зарегистрироваться</button>
             </form>
             <div class="modal__footer">
                 <a href="#auth-modal" class="modal__switch">
                     <span class="modal__pointer">Уже есть аккаунт? Войти</span>
                 </a>
-                <a href="#" class="modal__social">
+                {% if TELEGRAM_BOT_USERNAME %}
+                <button type="button" class="modal__social modal__social--tg" id="tg-reg-btn">
+                    <img src="{% static 'images/telegram.svg' %}" alt="Telegram" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">
                     <span class="modal__pointer">Зарегистрироваться через Telegram</span>
-                </a>
+                </button>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -281,10 +306,11 @@
         </div>
     </div>
 
-    <div class="modal modal--car" id="car-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="car-title">
+    <div class="modal modal--car" id="car-modal" aria-hidden="true" role="dialog">
         <div class="modal__overlay"></div>
         <div class="modal__dialog">
             <button class="modal__close" aria-label="Закрыть">×</button>
+            
             <div class="modal__car-inner">
                 <div class="modal__car-left">
                     <div class="modal__car-slider swiper">
@@ -292,16 +318,19 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
+                    
                     <div class="modal__car-buttons">
-                        <a href="/request.html" class="modal__car-btn" id="consult-btn">КОНСУЛЬТАЦИЯ</a>
-                        <a href="/request.html" class="modal__car-btn" id="testdrive-btn">ТЕСТ-ДРАЙВ</a>
+                        <a href="/request/" class="modal__car-btn">КОНСУЛЬТАЦИЯ</a>
+                        <a href="/request/" class="modal__car-btn">ТЕСТ-ДРАЙВ</a>
                     </div>
                 </div>
+                
                 <div class="modal__car-right">
                     <h2 id="car-title" class="modal__car-title"></h2>
                     <p id="car-spec-line" class="modal__car-spec"></p>
                     <div id="car-description" class="modal__car-description"></div>
                     <div id="car-price" class="modal__car-price"></div>
+                    
                     <div class="modal__car-tech">
                         <h3 class="modal__car-tech-title">ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ</h3>
                         <div class="modal__tech-list" id="tech-list"></div>
